@@ -1,7 +1,6 @@
 package com.example.clientsservice.models;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @NoArgsConstructor
@@ -11,13 +10,11 @@ import javax.persistence.*;
 @ToString
 //
 @Entity
-@Table(name = "countries")
-public class Country {
+@Table(name = "accounts")
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @Column(length = 50, nullable = false, unique = true)
-    private String country;
-    @OneToOne(mappedBy =  "country")
-    private Region region;
+    private Long id;
+    @Column(nullable = false,columnDefinition = "int default 0")
+    private int amount;
 }

@@ -15,6 +15,10 @@ import java.util.Set;
 @Entity
 @Table(name = "clients")
 public class Client {
+    public enum Gender {
+        NONE, MALE, FEMALE
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,11 +28,14 @@ public class Client {
     private String name;
     @Column(length = 50, nullable = false)
     private String patronymic;
+    @Temporal(TemporalType.DATE)
     private LocalDate birthDate;
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+    @Column(nullable = false)
+    private Gender gender;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Address address;
     @OneToMany
     private Set<Phone> phones;

@@ -1,4 +1,4 @@
-package com.example.clientsservice.models;
+package com.example.clientsservice.models.adress;
 
 import lombok.*;
 

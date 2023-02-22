@@ -1,4 +1,6 @@
 package com.example.clientsservice.models;
+import com.example.clientsservice.models.adress.City;
+import com.example.clientsservice.models.adress.Street;
 import lombok.*;
 import javax.persistence.*;
 
@@ -9,15 +11,15 @@ import javax.persistence.*;
 @ToString
 //
 @Entity
-@Table(name = "address")
+@Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 50)
-    private String houseNumber;
-    @Column(length = 4, nullable = false)
-    private Integer flatNumber;
+    @Column(length = 50, nullable = false)
+    private String house;
+    @Column(length = 4)
+    private String apartment;
     @OneToOne(mappedBy = "address")
     private Client client;
     @OneToOne

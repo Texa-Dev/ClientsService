@@ -1,5 +1,6 @@
-package com.example.clientsservice.models;
+package com.example.clientsservice.models.adress;
 
+import com.example.clientsservice.models.Address;
 import lombok.*;
 
 import javax.persistence.*;

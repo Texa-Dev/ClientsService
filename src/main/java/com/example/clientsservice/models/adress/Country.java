@@ -1,4 +1,4 @@
-package com.example.clientsservice.models;
+package com.example.clientsservice.models.adress;
 
 import lombok.*;
 
@@ -11,13 +11,13 @@ import javax.persistence.*;
 @ToString
 //
 @Entity
-@Table(name = "street_names")
-public class StreetName {
+@Table(name = "countries")
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50, nullable = false, unique = true)
-    private String cityName;
-    @OneToOne(mappedBy = "streetName")
-    private Street street;;
+    private String country;
+    @OneToOne(mappedBy =  "country")
+    private Region region;
 }
