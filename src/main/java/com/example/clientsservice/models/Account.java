@@ -18,7 +18,6 @@ public class Account {
     private Long id;
     @Column(nullable = false,columnDefinition = "int default 0")
     private int amount;
-
-    @ManyToMany
+    @ManyToMany(mappedBy = "accounts")
     private List<Client> clients;
 }
