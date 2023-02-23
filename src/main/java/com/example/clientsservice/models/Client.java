@@ -34,24 +34,27 @@ public class Client {
     private String email;
     @Column(nullable = false)
     private Gender gender;
-    @OneToOne(optional = false) // тут не уверен, создает уникальность
+    @OneToOne//(optional = false) // тут не уверен, создает уникальность
+    @ToString.Exclude
     private Address address;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
+    @ToString.Exclude
     private Set<Phone> phones;
     @ManyToMany
     @JoinTable(name ="clients_accounts",
-            joinColumns = {@JoinColumn(
+            joinColumns = @JoinColumn(
                     table = "clients",
             referencedColumnName = "id",
             foreignKey =@ForeignKey(
-                    name = "fk_clients_id"
-            ))},
+                    name = "fk_client_id"
+            )),
             inverseJoinColumns =
     @JoinColumn(table = "accounts",
             referencedColumnName ="id",
             foreignKey =@ForeignKey(
-                    name = "fk_accounts_id")
+                    name = "fk_account_id")
     ))
+    @ToString.Exclude
     private List<Account> accounts;
 
 }

@@ -21,10 +21,13 @@ public class Address {
     @Column(length = 4)
     private String apartment;
     @OneToOne(mappedBy = "address")
+    @ToString.Exclude
     private Client client;
     @OneToOne
+    @ToString.Exclude
     private City city;
     @OneToOne
+    @ToString.Exclude
     private Street street;
 
 }

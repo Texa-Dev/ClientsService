@@ -19,5 +19,6 @@ public class Account {
     @Column(nullable = false,columnDefinition = "int default 0")
     private int amount;
     @ManyToMany(mappedBy = "accounts")
+    @ToString.Exclude
     private List<Client> clients;
 }

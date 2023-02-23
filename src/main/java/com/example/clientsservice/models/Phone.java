@@ -1,6 +1,8 @@
 package com.example.clientsservice.models;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -18,6 +20,14 @@ public class Phone {
     private Integer id;
     @Column(unique = true, nullable = false, length = 10)
     private String phone;
-    @ManyToOne
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+//    @JoinColumn(
+//            foreignKey = @ForeignKey(
+//                    name = "fk_client_id"
+//            )
+//    )
+   // @OnDelete(action = OnDeleteAction.CASCADE)
+    @ToString.Exclude
     private Client client;
 }
