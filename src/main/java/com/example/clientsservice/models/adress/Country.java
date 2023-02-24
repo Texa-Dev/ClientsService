@@ -19,5 +19,6 @@ public class Country {
     @Column(length = 50, nullable = false, unique = true)
     private String country;
     @OneToOne(mappedBy =  "country")
+    @ToString.Exclude
     private Region region;
 }
