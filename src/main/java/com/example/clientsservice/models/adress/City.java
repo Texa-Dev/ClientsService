@@ -17,11 +17,11 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
+    @ManyToOne
     private District district;
-    @OneToOne
+    @ManyToOne
     private CityType cityType;
-    @OneToOne
+    @ManyToOne
     private CityName cityName;
 
     @OneToOne(mappedBy = "city")

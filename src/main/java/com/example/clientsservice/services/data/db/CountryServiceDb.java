@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CountryServiceDb implements CountryService {
@@ -25,5 +26,10 @@ private CountryRepository countryRepository;
     @Override
     public Country getReferenceById(int i) {
         return countryRepository.getReferenceById(i);
+    }
+
+    @Override
+    public List<Country> findAll() {
+        return countryRepository.findAll();
     }
 }

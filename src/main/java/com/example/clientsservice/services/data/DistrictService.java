@@ -8,4 +8,6 @@ public interface DistrictService {
     District save(District district);
 
     void saveAll(ArrayList<District> districts);
+
+    District getReferenceById(int i);
 }

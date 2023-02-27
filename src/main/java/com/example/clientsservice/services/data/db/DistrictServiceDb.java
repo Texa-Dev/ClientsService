@@ -18,7 +18,11 @@ public class DistrictServiceDb implements DistrictService {
         return districtRepository.save(district);
     }
     @Override
-    public void saveAll(ArrayList<District> districts) {
-        districtRepository.saveAll(districts);
+    public void saveAll(ArrayList<District> districts) {districtRepository.saveAll(districts);
+    }
+
+    @Override
+    public District getReferenceById(int i) {
+        return districtRepository.getReferenceById(i);
     }
 }

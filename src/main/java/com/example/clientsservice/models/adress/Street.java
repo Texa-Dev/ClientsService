@@ -17,9 +17,9 @@ public class Street {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
-    private StreetTypes streetType;
-    @OneToOne
+    @ManyToOne
+    private StreetType streetType;
+    @ManyToOne
     private StreetName streetName;
     @OneToOne(mappedBy = "street")
     private Address address;

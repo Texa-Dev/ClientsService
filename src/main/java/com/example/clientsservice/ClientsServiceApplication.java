@@ -1,14 +1,7 @@
 package com.example.clientsservice;
 
-import com.example.clientsservice.models.adress.Country;
-import com.example.clientsservice.models.adress.District;
-import com.example.clientsservice.models.adress.Region;
-import com.example.clientsservice.services.data.ClientService;
-import com.example.clientsservice.repositories.RegionRepository;
-import com.example.clientsservice.services.data.CountryService;
-import com.example.clientsservice.services.data.DistrictService;
-import com.example.clientsservice.services.data.RegionService;
-import net.bytebuddy.dynamic.TypeResolutionStrategy;
+import com.example.clientsservice.models.adress.*;
+import com.example.clientsservice.services.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,8 +21,19 @@ public class ClientsServiceApplication {
     private RegionService regionService;
     @Autowired
     private DistrictService districtService;
+    @Autowired
+    private CityTypeService cityTypeService;
+    @Autowired
+    private CityNameService cityNameService;
+    @Autowired
+    private CityService cityService;
+    @Autowired
+    private StreetTypeService streetTypeService;
 
-
+    @Autowired
+    private StreetNameService streetNameService;
+    @Autowired
+    private StreetService streetService;
     public static void main(String[] args) {
         SpringApplication.run(ClientsServiceApplication.class, args);
 
@@ -86,17 +90,193 @@ public class ClientsServiceApplication {
         regionService.saveAll(regions);
 
         ArrayList<District> districts = new ArrayList<>();
-        districts.add(new District(0,"Kremenchugsky", regionService.getReferenceById(17),null));
-        districts.add(new District(0,"Lubensky", regionService.getReferenceById(17),null));
-        districts.add(new District(0,"Mirgorodsky", regionService.getReferenceById(17),null));
-        districts.add(new District(0,"Poltavsky", regionService.getReferenceById(17),null));
-        districts.add(new District(0,"Akhtyrsky", regionService.getReferenceById(19),null));
-        districts.add(new District(0,"Konotopsky", regionService.getReferenceById(19),null));
-        districts.add(new District(0,"Romensky", regionService.getReferenceById(19),null));
-        districts.add(new District(0,"Sumysky", regionService.getReferenceById(19),null));
-        districts.add(new District(0,"Shostkinsky", regionService.getReferenceById(19),null));
+        districts.add(new District(0, "Kremenchugsky", regionService.getReferenceById(17), null));
+        districts.add(new District(0, "Lubensky", regionService.getReferenceById(17), null));
+        districts.add(new District(0, "Mirgorodsky", regionService.getReferenceById(17), null));
+        districts.add(new District(0, "Poltavsky", regionService.getReferenceById(17), null));
+        districts.add(new District(0, "Akhtyrsky", regionService.getReferenceById(19), null));
+        districts.add(new District(0, "Konotopsky", regionService.getReferenceById(19), null));
+        districts.add(new District(0, "Romensky", regionService.getReferenceById(19), null));
+        districts.add(new District(0, "Sumysky", regionService.getReferenceById(19), null));
+        districts.add(new District(0, "Shostkinsky", regionService.getReferenceById(19), null));
 
         districtService.saveAll(districts);
+
+        ArrayList<CityType> cityTypes = new ArrayList<>();
+
+        cityTypes.add(new CityType(0, "Capital", null));
+        cityTypes.add(new CityType(0, "City", null));
+        cityTypes.add(new CityType(0, "Town", null));
+        cityTypes.add(new CityType(0, "Village", null));
+
+        cityTypeService.saveAll(cityTypes);
+
+        ArrayList<CityName> cityNames = new ArrayList<>();
+
+        cityNames.add(new CityName(0, "Gadyach", null));
+        cityNames.add(new CityName(0, "Globino", null));
+        cityNames.add(new CityName(0, "Horishni Plavni", null));
+        cityNames.add(new CityName(0, "Grebyonka", null));
+        cityNames.add(new CityName(0, "Zavodskoye", null));
+        cityNames.add(new CityName(0, "Zenkov", null));
+        cityNames.add(new CityName(0, "Karlovka", null));
+        cityNames.add(new CityName(0, "Kobelyaki", null));
+        cityNames.add(new CityName(0, "Kremenchuk", null));
+        cityNames.add(new CityName(0, "Lokhvytsa", null));
+        cityNames.add(new CityName(0, "Lubny", null));
+        cityNames.add(new CityName(0, "Mirgorod", null));
+        cityNames.add(new CityName(0, "Pyryatin", null));
+        cityNames.add(new CityName(0, "Poltava", null));
+        cityNames.add(new CityName(0, "Khorol", null));
+        cityNames.add(new CityName(0, "Dikanka", null));
+        cityNames.add(new CityName(0, "Kotelva", null));
+        cityNames.add(new CityName(0, "New Sanzhary", null));
+        cityNames.add(new CityName(0, "Opishna", null));
+        cityNames.add(new CityName(0, "Konotop", null));
+        cityNames.add(new CityName(0, "Shostka", null));
+        cityNames.add(new CityName(0, "Akhtyrka", null));
+        cityNames.add(new CityName(0, "Romny", null));
+        cityNames.add(new CityName(0, "Glukhov", null));
+        cityNames.add(new CityName(0, "Lebedin", null));
+        cityNames.add(new CityName(0, "Krolevets", null));
+        cityNames.add(new CityName(0, "Trostyanets", null));
+        cityNames.add(new CityName(0, "Belopolye", null));
+        cityNames.add(new CityName(0, "Krasnopole", null));
+        cityNames.add(new CityName(0, "Seredina-Buda", null));
+        cityNames.add(new CityName(0, "Voronezh", null));
+        cityNames.add(new CityName(0, "Stepanovka", null));
+        cityNames.add(new CityName(0, "Lipovaya Dolina", null));
+        cityNames.add(new CityName(0, "Nedrigailov", null));
+        cityNames.add(new CityName(0, "Sumy", null));
+
+        cityNameService.saveAll(cityNames);
+
+        ArrayList<City> cities = new ArrayList<>();
+//towns
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(14), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(6), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(7), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(8), null));
+        //cities
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(16), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(17), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(18), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(4), null));
+        cities.add(new City(0, districtService.getReferenceById(4), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(19), null));
+
+        cities.add(new City(0, districtService.getReferenceById(3), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(12), null));
+        cities.add(new City(0, districtService.getReferenceById(3), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(1), null));
+        cities.add(new City(0, districtService.getReferenceById(3), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(5), null));
+        cities.add(new City(0, districtService.getReferenceById(3), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(10), null));
+
+        cities.add(new City(0, districtService.getReferenceById(2), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(11), null));
+        cities.add(new City(0, districtService.getReferenceById(2), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(13), null));
+        cities.add(new City(0, districtService.getReferenceById(2), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(15), null));
+
+        cities.add(new City(0, districtService.getReferenceById(1), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(9), null));
+        cities.add(new City(0, districtService.getReferenceById(1), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(2), null));
+        cities.add(new City(0, districtService.getReferenceById(1), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(3), null));
+
+        cities.add(new City(0, districtService.getReferenceById(5), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(22), null));
+        cities.add(new City(0, districtService.getReferenceById(5), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(27), null));
+
+        cities.add(new City(0, districtService.getReferenceById(6), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(20), null));
+        cities.add(new City(0, districtService.getReferenceById(6), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(26), null));
+
+        cities.add(new City(0, districtService.getReferenceById(7), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(23), null));
+        cities.add(new City(0, districtService.getReferenceById(7), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(33), null));
+        cities.add(new City(0, districtService.getReferenceById(7), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(34), null));
+
+        cities.add(new City(0, districtService.getReferenceById(8), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(35), null));
+        cities.add(new City(0, districtService.getReferenceById(8), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(28), null));
+        cities.add(new City(0, districtService.getReferenceById(8), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(25), null));
+
+        cities.add(new City(0, districtService.getReferenceById(9), cityTypeService.getReferenceById(2),
+                cityNameService.getReferenceById(21), null));
+        cities.add(new City(0, districtService.getReferenceById(9), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(30), null));
+        cities.add(new City(0, districtService.getReferenceById(9), cityTypeService.getReferenceById(3),
+                cityNameService.getReferenceById(24), null));
+
+        cityService.saveAll(cities);
+        System.out.println(cityService.findAll());
+
+        ArrayList<StreetType> streetTypes = new ArrayList<>();
+        streetTypes.add(new StreetType(0, "Street", null));
+        streetTypes.add(new StreetType(0, "Avenue", null));
+        streetTypes.add(new StreetType(0, "Boulevard", null));
+        streetTypes.add(new StreetType(0, "Court", null));
+        streetTypes.add(new StreetType(0, "Drive", null));
+        streetTypes.add(new StreetType(0, "Lane", null));
+        streetTypes.add(new StreetType(0, "Alley", null));
+
+        streetTypeService.saveAll(streetTypes);
+
+        ArrayList<StreetName> streetNames = new ArrayList<>();
+
+        streetNames.add(new StreetName(0, "Floral", null));
+        streetNames.add(new StreetName(0, "Spring", null));
+        streetNames.add(new StreetName(0, "Sunny", null));
+        streetNames.add(new StreetName(0, "Apricot", null));
+        streetNames.add(new StreetName(0, "Garden", null));
+        streetNames.add(new StreetName(0, "Meadow", null));
+        streetNames.add(new StreetName(0, "Central", null));
+        streetNames.add(new StreetName(0, "Harmony", null));
+        streetNames.add(new StreetName(0, "Happiness", null));
+        streetNames.add(new StreetName(0, "Lime", null));
+        streetNames.add(new StreetName(0, "Rozhdestvenskaya", null));
+
+        streetNameService.saveAll(streetNames);
+
+        ArrayList<Street> streets = new ArrayList<>();
+
+        streets.add(new Street(0,streetTypeService.getReferenceById(1),streetNameService.getReferenceById(1),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(2),streetNameService.getReferenceById(2),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(2),streetNameService.getReferenceById(4),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(3),streetNameService.getReferenceById(7),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(4),streetNameService.getReferenceById(4),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(5),streetNameService.getReferenceById(9),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(5),streetNameService.getReferenceById(8),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(6),streetNameService.getReferenceById(3),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(2),streetNameService.getReferenceById(1),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(6),streetNameService.getReferenceById(5),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(7),streetNameService.getReferenceById(6),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(4),streetNameService.getReferenceById(8),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(2),streetNameService.getReferenceById(1),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(4),streetNameService.getReferenceById(2),null));
+        streets.add(new Street(0,streetTypeService.getReferenceById(3),streetNameService.getReferenceById(7),null));
+
+        streetService.saveAll(streets);
+        /**/
     }
 
 

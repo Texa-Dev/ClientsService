@@ -3,6 +3,7 @@ package com.example.clientsservice.models.adress;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,6 +19,7 @@ public class StreetName {
     private Integer id;
     @Column(length = 50, nullable = false, unique = true)
     private String cityName;
-    @OneToOne(mappedBy = "streetName")
-    private Street street;;
+    @OneToMany(mappedBy = "streetName")
+    @ToString.Exclude
+    private List<Street> street;;
 }

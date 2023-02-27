@@ -3,6 +3,8 @@ package com.example.clientsservice.models.adress;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +20,9 @@ public class Region {
     private Integer id;
     @Column(length = 50, nullable = false,unique = true)
     private String region;
-    @OneToOne
+    @ManyToOne
     private Country country;
-    @OneToOne(mappedBy = "region")
-    private District district;
+    @OneToMany(mappedBy = "region")
+    @ToString.Exclude
+    private List<District> district;
 }

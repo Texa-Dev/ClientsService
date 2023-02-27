@@ -3,6 +3,7 @@ package com.example.clientsservice.models.adress;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,12 +13,13 @@ import javax.persistence.*;
 //
 @Entity
 @Table(name = "street_types")
-public class StreetTypes {
+public class StreetType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50, nullable = false, unique = true)
     private String streetType;
-    @OneToOne(mappedBy = "streetType")
-    private Street street;
+    @OneToMany(mappedBy = "streetType")
+    @ToString.Exclude
+    private List<Street> street;
 }
