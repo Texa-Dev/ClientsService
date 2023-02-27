@@ -11,6 +11,7 @@ public interface CountryService {
     void saveAll(ArrayList<Country> countries);
 
     Country getReferenceById(int i);
+    Country findByName(String name);
 
     List<Country> findAll();
 }

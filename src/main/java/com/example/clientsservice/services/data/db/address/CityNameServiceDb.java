@@ -19,6 +19,7 @@ public class CityNameServiceDb implements CityNameService {
 
     @Override
     public CityName getReferenceById(int i) {
-        return cityNameRepository.getReferenceById(i);
+
+        return cityNameRepository.findById(i).get();
     }
 }
