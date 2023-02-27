@@ -25,4 +25,9 @@ public class CityServiceDb implements CityService {
        // cityRepository.findAll();
       return cityRepository.findAll(Example.of(c));
     }
+
+    @Override
+    public City getReferenceById(int i) {
+        return cityRepository.getReferenceById(i);
+    }
 }

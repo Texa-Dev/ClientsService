@@ -9,4 +9,6 @@ public interface CityService {
     void saveAll(ArrayList<City> cities);
 
  List<City> findAll();
+
+    City getReferenceById(int i);
 }

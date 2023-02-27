@@ -20,6 +20,7 @@ public class District {
     @Column(length = 50, nullable = false, unique = true)
     private String district;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_region_id"))
     private Region region;
     @OneToMany(mappedBy = "district")
     @ToString.Exclude

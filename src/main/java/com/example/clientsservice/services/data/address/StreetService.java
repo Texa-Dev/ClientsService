@@ -9,4 +9,6 @@ public interface StreetService {
     void saveAll(ArrayList<Street> streets);
 
     List<Street> findAll();
+
+    Street getReferenceById(int i);
 }

@@ -21,6 +21,7 @@ public class Region {
     @Column(length = 50, nullable = false,unique = true)
     private String region;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_country_id"))
     private Country country;
     @OneToMany(mappedBy = "region")
     @ToString.Exclude

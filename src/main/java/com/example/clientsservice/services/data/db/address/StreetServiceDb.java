@@ -23,4 +23,9 @@ public class StreetServiceDb implements StreetService {
     public List<Street> findAll() {
         return streetRepository.findAll();
     }
+
+    @Override
+    public Street getReferenceById(int i) {
+        return streetRepository.getReferenceById(i);
+    }
 }

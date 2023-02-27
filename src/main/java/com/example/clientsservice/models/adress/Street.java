@@ -18,8 +18,10 @@ public class Street {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetTyp_id"))
     private StreetType streetType;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetName_id"))
     private StreetName streetName;
     @OneToOne(mappedBy = "street")
     private Address address;

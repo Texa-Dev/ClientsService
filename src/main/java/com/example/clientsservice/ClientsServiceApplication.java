@@ -1,5 +1,6 @@
 package com.example.clientsservice;
 
+import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.adress.*;
 import com.example.clientsservice.services.data.*;
 import com.example.clientsservice.services.data.address.*;
@@ -30,11 +31,13 @@ public class ClientsServiceApplication {
     private CityService cityService;
     @Autowired
     private StreetTypeService streetTypeService;
-
     @Autowired
     private StreetNameService streetNameService;
     @Autowired
     private StreetService streetService;
+    @Autowired
+    private AddressService addressService;
+
     public static void main(String[] args) {
         SpringApplication.run(ClientsServiceApplication.class, args);
 
@@ -278,7 +281,31 @@ public class ClientsServiceApplication {
 
         streetService.saveAll(streets);
 
-        System.out.println(streetService.findAll());
+        ArrayList<Address> addresses = new ArrayList<>();
+        addresses.add(new Address(0,"10","4",null,cityService.getReferenceById(1),streetService.getReferenceById(1)));
+        addresses.add(new Address(0,"1","5",null,cityService.getReferenceById(2),streetService.getReferenceById(2)));
+        addresses.add(new Address(0,"2","6",null,cityService.getReferenceById(3),streetService.getReferenceById(3)));
+        addresses.add(new Address(0,"3","7",null,cityService.getReferenceById(4),streetService.getReferenceById(4)));
+        addresses.add(new Address(0,"5","54",null,cityService.getReferenceById(5),streetService.getReferenceById(5)));
+        addresses.add(new Address(0,"1123","34",null,cityService.getReferenceById(6),streetService.getReferenceById(5)));
+        addresses.add(new Address(0,"23","34",null,cityService.getReferenceById(7),streetService.getReferenceById(6)));
+        addresses.add(new Address(0,"546","23",null,cityService.getReferenceById(8),streetService.getReferenceById(6)));
+        addresses.add(new Address(0,"2","12",null,cityService.getReferenceById(9),streetService.getReferenceById(7)));
+        addresses.add(new Address(0,"56","6",null,cityService.getReferenceById(10),streetService.getReferenceById(8)));
+        addresses.add(new Address(0,"2","54",null,cityService.getReferenceById(11),streetService.getReferenceById(9)));
+        addresses.add(new Address(0,"4","76",null,cityService.getReferenceById(2),streetService.getReferenceById(10)));
+        addresses.add(new Address(0,"56","72",null,cityService.getReferenceById(12),streetService.getReferenceById(11)));
+        addresses.add(new Address(0,"123","98",null,cityService.getReferenceById(11),streetService.getReferenceById(11)));
+        addresses.add(new Address(0,"86","122",null,cityService.getReferenceById(11),streetService.getReferenceById(12)));
+        addresses.add(new Address(0,"43","323",null,cityService.getReferenceById(14),streetService.getReferenceById(13)));
+        addresses.add(new Address(0,"45","45",null,cityService.getReferenceById(32),streetService.getReferenceById(14)));
+        addresses.add(new Address(0,"65","122",null,cityService.getReferenceById(12),streetService.getReferenceById(15)));
+        addresses.add(new Address(0,"23","657",null,cityService.getReferenceById(3),streetService.getReferenceById(4)));
+        addresses.add(new Address(0,"5","4",null,cityService.getReferenceById(4),streetService.getReferenceById(6)));
+
+        addressService.saveAll(addresses);
+
+
         /**/
     }
 

@@ -24,9 +24,11 @@ public class Address {
     @ToString.Exclude
     private Client client;
     @OneToOne
+    @JoinColumn(foreignKey =  @ForeignKey(name = "fk_city_id"))
     @ToString.Exclude
     private City city;
     @OneToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "fk_street_id"))
     @ToString.Exclude
     private Street street;
 
