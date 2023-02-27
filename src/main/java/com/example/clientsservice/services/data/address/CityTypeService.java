@@ -1,4 +1,4 @@
-package com.example.clientsservice.services.data;
+package com.example.clientsservice.services.data.address;
 
 import com.example.clientsservice.models.adress.CityType;
 

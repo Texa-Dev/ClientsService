@@ -2,6 +2,7 @@ package com.example.clientsservice;
 
 import com.example.clientsservice.models.adress.*;
 import com.example.clientsservice.services.data.*;
+import com.example.clientsservice.services.data.address.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -276,6 +277,8 @@ public class ClientsServiceApplication {
         streets.add(new Street(0,streetTypeService.getReferenceById(3),streetNameService.getReferenceById(7),null));
 
         streetService.saveAll(streets);
+
+        System.out.println(streetService.findAll());
         /**/
     }
 

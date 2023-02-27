@@ -1,8 +1,8 @@
-package com.example.clientsservice.services.data.db;
+package com.example.clientsservice.services.data.db.address;
 
 import com.example.clientsservice.models.adress.StreetType;
-import com.example.clientsservice.repositories.StreetTypeRepository;
-import com.example.clientsservice.services.data.StreetTypeService;
+import com.example.clientsservice.repositories.address.StreetTypeRepository;
+import com.example.clientsservice.services.data.address.StreetTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,11 +1,9 @@
-package com.example.clientsservice.services.data.db;
+package com.example.clientsservice.services.data.db.address;
 
 import com.example.clientsservice.models.adress.Region;
-import com.example.clientsservice.repositories.RegionRepository;
-import com.example.clientsservice.services.data.RegionService;
+import com.example.clientsservice.repositories.address.RegionRepository;
+import com.example.clientsservice.services.data.address.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.example.clientsservice.services.data.db;
+package com.example.clientsservice.services.data.db.address;
 
 import com.example.clientsservice.models.adress.District;
-import com.example.clientsservice.repositories.DistrictRepository;
-import com.example.clientsservice.services.data.DistrictService;
+import com.example.clientsservice.repositories.address.DistrictRepository;
+import com.example.clientsservice.services.data.address.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
