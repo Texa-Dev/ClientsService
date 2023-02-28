@@ -34,9 +34,9 @@ public class Client {
     private String email;
     @Column(nullable = false)
     private Gender gender;
-    @OneToOne(optional = false) // тут не уверен, создает уникальность
+    @ManyToOne//(optional = false) // тут не уверен, создает уникальность
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_address_id"))
-    @ToString.Exclude
+    @ToString.Include
     private Address address;
     @OneToMany(mappedBy = "client")
     @ToString.Exclude

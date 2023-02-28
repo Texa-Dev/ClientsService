@@ -1,21 +1,27 @@
 package com.example.clientsservice;
 
 import com.example.clientsservice.models.Address;
+import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.adress.*;
 import com.example.clientsservice.services.data.*;
 import com.example.clientsservice.services.data.address.*;
+import com.example.clientsservice.services.data.qualifiers.QualifierClientServiceJson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootApplication
 public class ClientsServiceApplication {
+   // @Qualifier("clientServiceDb")
     @Autowired
+  // @QualifierClientServiceJson
     private ClientService clientService;
     @Autowired
     private CountryService countryService;
@@ -45,11 +51,7 @@ public class ClientsServiceApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void onLoaded() {
-//        Client client=new Client(0, "Surname", "Name", "Patronymic", LocalDate.now(),
-//                "email@test.com", Client.Gender.MALE,
-//                null, null ,null );
-//       client= clientService.save(client);
-        // System.out.println(client);
+
         Country country = new Country(0, "Ukraine", null);
         countryService.save(country);
 
@@ -304,7 +306,14 @@ public class ClientsServiceApplication {
         addresses.add(new Address(0, "5", "4", null, cityService.getReferenceById(4), streetService.getReferenceById(6)));
 
         addressService.saveAll(addresses);
+ArrayList<Client> clients = new ArrayList<>();
+        clients.add(new Client(0, "Surname", "Name", "Patronymic", LocalDate.now(),
+             "email@test.com", Client.Gender.MALE, addressService.getById(2), null ,null ));
+        clients.add(new Client(0, "Surname1", "Name1", "Patronymic1", LocalDate.now(),
+             "email1@test.com", Client.Gender.MALE, addressService.getById(2), null ,null ));
+     clientService.saveAll(clients);
 
+     System.out.println(clientService.findAll());
         /**/
     }
 

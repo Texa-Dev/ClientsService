@@ -3,6 +3,7 @@ import com.example.clientsservice.models.adress.City;
 import com.example.clientsservice.models.adress.Street;
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,9 +21,9 @@ public class Address {
     private String house;
     @Column(length = 4)
     private String apartment;
-    @OneToOne(mappedBy = "address")
+    @OneToMany(mappedBy = "address")
     @ToString.Exclude
-    private Client client;
+    private List<Client> client;
     @OneToOne
     @JoinColumn(foreignKey =  @ForeignKey(name = "fk_city_id"))
     @ToString.Exclude

@@ -14,7 +14,16 @@ public class AddressServiceDb implements AddressService {
     private AddressRepository addressRepository;
 
     @Override
+    public void save(Address address) {
+        addressRepository.save(address);
+    }
+    @Override
     public void saveAll(ArrayList<Address> addresses) {
         addressRepository.saveAll(addresses);
+    }
+
+    @Override
+    public Address getById(int i) {
+        return addressRepository.getReferenceById(i);
     }
 }
