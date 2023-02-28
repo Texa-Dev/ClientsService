@@ -1,4 +1,4 @@
-package com.example.clientsservice.services.data.json;
+package json;
 
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.AddressService;

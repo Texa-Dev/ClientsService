@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface ClientService {
     Client save(Client client);
+    Client findById(int id);
 
     void saveAll(ArrayList<Client> clients);
 

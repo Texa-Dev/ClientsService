@@ -22,6 +22,11 @@ public class ClientServiceDb implements ClientService {
     }
 
     @Override
+    public Client findById(int id) {
+        return clientRepository.findById(id).orElseThrow();
+    }
+
+    @Override
     public void saveAll(ArrayList<Client> clients) {
         clientRepository.saveAll(clients);
     }
