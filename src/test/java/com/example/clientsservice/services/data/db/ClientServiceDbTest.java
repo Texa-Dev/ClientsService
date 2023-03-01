@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,9 +21,16 @@ public class ClientServiceDbTest {
     @Autowired
     ClientService clientService;
     static Client client = new Client(1, "Surname", "Name", "Patronymic", LocalDate.now(),
-            "email@test.com", Client.Gender.MALE, null, null, null);
+            "email@test1.com", Client.Gender.MALE, null, null, null);
+    static Client client2 = new Client(2, "Surname", "Name", "Patronymic", LocalDate.now(),
+            "email@test2.com", Client.Gender.MALE, null, null, null);
+    static Client client3 = new Client(3, "Surname", "Name", "Patronymic", LocalDate.now(),
+            "email@test3.com", Client.Gender.MALE, null, null, null);
+
 static  Client saved;
 static List<Client> clients;
+static List<Client> saving;
+
     @Test
     @Order(1)
     void save() {
@@ -31,9 +39,18 @@ static List<Client> clients;
         assertNotNull(saved);
         assertEquals(saved, client);
     }
-
     @Test
     @Order(2)
+    void saveAll() {
+        saving =List.of(client2,client3);
+        clients = clientService.saveAll(saving);
+        clients.forEach(System.out::println);
+        assertNotNull(clients);
+        assertEquals(saving, clients);
+    }
+
+    @Test
+    @Order(3)
     void findById() {
         saved = clientService.findById(client.getId());
         System.out.println(saved);
@@ -42,7 +59,7 @@ static List<Client> clients;
     }
 
     @Test
-    @Order(2)
+    @Order(4)
     void findAll() {
         clients=clientService.findAll();
         clients.forEach(System.out::println);

@@ -4,12 +4,14 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "countries")
@@ -21,5 +23,7 @@ public class Country {
     private String country;
     @OneToMany(mappedBy =  "country")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Region> region;
+
 }

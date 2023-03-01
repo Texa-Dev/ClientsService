@@ -5,10 +5,10 @@ import com.example.clientsservice.repositories.address.CountryRepository;
 import com.example.clientsservice.services.data.address.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CountryServiceDb implements CountryService {
@@ -20,8 +20,8 @@ private CountryRepository countryRepository;
     }
 
     @Override
-    public void saveAll(ArrayList<Country> countries) {
-        countryRepository.saveAll(countries);
+    public List<Country> saveAll(List<Country> countries) {
+        return countryRepository.saveAll(countries);
     }
 
     @Override
@@ -34,18 +34,21 @@ private CountryRepository countryRepository;
         Country con = new Country();
         con.setCountry(name);
         Example<Country> example = Example.of(con);
-        return countryRepository.findBy(example, query -> query.first()).get();
-        /*    default List<User> findByFirstNameAndAge(String firstName, int age) {
-        User user = new User();
-        user.setFirstName(firstName);
-        user.setAge(age);
-        Example<User> example = Example.of(user);
-        return findBy(example, query -> query.fetch());
-    }*/
+        return countryRepository.findBy(example, FluentQuery.FetchableFluentQuery::first).orElseThrow();
     }
 
     @Override
     public List<Country> findAll() {
         return countryRepository.findAll();
+    }
+
+    @Override
+    public Country findById(int i) {
+        return countryRepository.findById(i).orElse(null);
+    }
+
+    @Override
+    public void deleteById(int i) {
+        countryRepository.deleteById(i);
     }
 }

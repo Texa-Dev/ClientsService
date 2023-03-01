@@ -8,10 +8,13 @@ import java.util.List;
 public interface CountryService {
     Country save(Country country);
 
-    void saveAll(ArrayList<Country> countries);
+    List<Country> saveAll(List<Country> countries);
 
+    Country findById(int i);
     Country getReferenceById(int i);
     Country findByName(String name);
 
     List<Country> findAll();
+
+    void deleteById(int i);
 }
