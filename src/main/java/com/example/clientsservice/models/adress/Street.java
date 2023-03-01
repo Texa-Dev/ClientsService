@@ -14,11 +14,19 @@ import javax.persistence.*;
 @Entity
 @Table(name = "streets")
 public class Street {
+    private enum StreetType{
+        STREET,
+        AVENUE,
+        DRIVE,
+        COURT,
+        LANE,
+        ALLEY
+
+
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne
-    @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetTyp_id"))
     private StreetType streetType;
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetName_id"))

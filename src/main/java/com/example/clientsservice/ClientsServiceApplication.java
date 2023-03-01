@@ -52,110 +52,8 @@ public class ClientsServiceApplication {
     @EventListener(ApplicationReadyEvent.class)
     public void onLoaded() {
 
-        Country country = new Country(0, "Ukraine", null);
-        countryService.save(country);
 
-        ArrayList<Country> countries = new ArrayList<>();
-        countries.add(new Country(0, "Poland", null));
-        countries.add(new Country(0, "Germany", null));
-        countries.add(new Country(0, "USA", null));
-        countries.add(new Country(0, "Switzerland", null));
-        countries.add(new Country(0, "Italy", null));
-        countries.add(new Country(0, "France", null));
-        countries.add(new Country(0, "Austria", null));
 
-        countryService.saveAll(countries);
-        ArrayList<Region> regions = new ArrayList<>(Arrays.asList(
-                (new Region(0, "Cherkasy", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Chernihiv", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Chernivtsi", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Crimea", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Dnipropetrovsk", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Donetsk", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Ivano-Frankivsk", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Kharkiv", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Kherson", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Khmelnytskyi", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Kirovohrad", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Kyiv", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Luhansk", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Lviv", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Mykolaiv", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Odesa", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Poltava", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Rivne", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Sumy", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Ternopil", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Vinnytsia", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Volyn", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Zakarpattia", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Zaporizhzhia", countryService.findByName("Ukraine"), null)),
-                (new Region(0, "Zhytomyr", countryService.findByName("Ukraine"), null))
-
-        ));
-        regionService.saveAll(regions);
-
-        ArrayList<District> districts = new ArrayList<>();
-        districts.add(new District(0, "Kremenchugsky", regionService.getReferenceById(17), null));
-        districts.add(new District(0, "Lubensky", regionService.getReferenceById(17), null));
-        districts.add(new District(0, "Mirgorodsky", regionService.getReferenceById(17), null));
-        districts.add(new District(0, "Poltavsky", regionService.getReferenceById(17), null));
-        districts.add(new District(0, "Akhtyrsky", regionService.getReferenceById(19), null));
-        districts.add(new District(0, "Konotopsky", regionService.getReferenceById(19), null));
-        districts.add(new District(0, "Romensky", regionService.getReferenceById(19), null));
-        districts.add(new District(0, "Sumysky", regionService.getReferenceById(19), null));
-        districts.add(new District(0, "Shostkinsky", regionService.getReferenceById(19), null));
-
-        districtService.saveAll(districts);
-
-        ArrayList<CityType> cityTypes = new ArrayList<>();
-
-        cityTypes.add(new CityType(0, "Capital", null));
-        cityTypes.add(new CityType(0, "City", null));
-        cityTypes.add(new CityType(0, "Town", null));
-        cityTypes.add(new CityType(0, "Village", null));
-
-        cityTypeService.saveAll(cityTypes);
-
-        ArrayList<CityName> cityNames = new ArrayList<>();
-
-        cityNames.add(new CityName(0, "Gadyach", null));
-        cityNames.add(new CityName(0, "Globino", null));
-        cityNames.add(new CityName(0, "Horishni Plavni", null));
-        cityNames.add(new CityName(0, "Grebyonka", null));
-        cityNames.add(new CityName(0, "Zavodskoye", null));
-        cityNames.add(new CityName(0, "Zenkov", null));
-        cityNames.add(new CityName(0, "Karlovka", null));
-        cityNames.add(new CityName(0, "Kobelyaki", null));
-        cityNames.add(new CityName(0, "Kremenchuk", null));
-        cityNames.add(new CityName(0, "Lokhvytsa", null));
-        cityNames.add(new CityName(0, "Lubny", null));
-        cityNames.add(new CityName(0, "Mirgorod", null));
-        cityNames.add(new CityName(0, "Pyryatin", null));
-        cityNames.add(new CityName(0, "Poltava", null));
-        cityNames.add(new CityName(0, "Khorol", null));
-        cityNames.add(new CityName(0, "Dikanka", null));
-        cityNames.add(new CityName(0, "Kotelva", null));
-        cityNames.add(new CityName(0, "New Sanzhary", null));
-        cityNames.add(new CityName(0, "Opishna", null));
-        cityNames.add(new CityName(0, "Konotop", null));
-        cityNames.add(new CityName(0, "Shostka", null));
-        cityNames.add(new CityName(0, "Akhtyrka", null));
-        cityNames.add(new CityName(0, "Romny", null));
-        cityNames.add(new CityName(0, "Glukhov", null));
-        cityNames.add(new CityName(0, "Lebedin", null));
-        cityNames.add(new CityName(0, "Krolevets", null));
-        cityNames.add(new CityName(0, "Trostyanets", null));
-        cityNames.add(new CityName(0, "Belopolye", null));
-        cityNames.add(new CityName(0, "Krasnopole", null));
-        cityNames.add(new CityName(0, "Seredina-Buda", null));
-        cityNames.add(new CityName(0, "Voronezh", null));
-        cityNames.add(new CityName(0, "Stepanovka", null));
-        cityNames.add(new CityName(0, "Lipovaya Dolina", null));
-        cityNames.add(new CityName(0, "Nedrigailov", null));
-        cityNames.add(new CityName(0, "Sumy", null));
-
-        cityNameService.saveAll(cityNames);
 
         ArrayList<City> cities = new ArrayList<>();
 //towns
@@ -236,32 +134,9 @@ public class ClientsServiceApplication {
         cityService.saveAll(cities);
         //   System.out.println(cityService.findAll());
 
-        ArrayList<StreetType> streetTypes = new ArrayList<>();
-        streetTypes.add(new StreetType(0, "Street", null));
-        streetTypes.add(new StreetType(0, "Avenue", null));
-        streetTypes.add(new StreetType(0, "Boulevard", null));
-        streetTypes.add(new StreetType(0, "Court", null));
-        streetTypes.add(new StreetType(0, "Drive", null));
-        streetTypes.add(new StreetType(0, "Lane", null));
-        streetTypes.add(new StreetType(0, "Alley", null));
 
-        streetTypeService.saveAll(streetTypes);
 
-        ArrayList<StreetName> streetNames = new ArrayList<>();
 
-        streetNames.add(new StreetName(0, "Floral", null));
-        streetNames.add(new StreetName(0, "Spring", null));
-        streetNames.add(new StreetName(0, "Sunny", null));
-        streetNames.add(new StreetName(0, "Apricot", null));
-        streetNames.add(new StreetName(0, "Garden", null));
-        streetNames.add(new StreetName(0, "Meadow", null));
-        streetNames.add(new StreetName(0, "Central", null));
-        streetNames.add(new StreetName(0, "Harmony", null));
-        streetNames.add(new StreetName(0, "Happiness", null));
-        streetNames.add(new StreetName(0, "Lime", null));
-        streetNames.add(new StreetName(0, "Rozhdestvenskaya", null));
-
-        streetNameService.saveAll(streetNames);
 
         ArrayList<Street> streets = new ArrayList<>();
 

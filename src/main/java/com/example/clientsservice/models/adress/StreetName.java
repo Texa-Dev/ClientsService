@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "street_names")
@@ -18,8 +19,9 @@ public class StreetName {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50, nullable = false, unique = true)
-    private String cityName;
+    private String streetName;
     @OneToMany(mappedBy = "streetName")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Street> street;;
 }

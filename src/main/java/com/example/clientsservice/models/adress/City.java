@@ -14,18 +14,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "cities")
 public class City {
+  private  enum CityType{
+        CAPITAL,
+        TOWN,
+        CITY,
+        VILLAGE
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private CityType cityType;
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_district_id"))
     private District district;
-    @ManyToOne
-    @JoinColumn(foreignKey = @ForeignKey(name = "fk_cityType_id"))
-    private CityType cityType;
+
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_cityName_id"))
-
     private CityName cityName;
 
     @OneToOne(mappedBy = "city")

@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "city_names")
@@ -22,5 +23,6 @@ public class CityName {
 
     @OneToMany(mappedBy = "cityName")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<City> city;
 }

@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 public class CountryServiceDb implements CountryService {
-@Autowired
-private CountryRepository countryRepository;
+    @Autowired
+    private CountryRepository countryRepository;
+
     @Override
     public Country save(Country country) {
         return countryRepository.save(country);
@@ -34,12 +36,14 @@ private CountryRepository countryRepository;
         Country con = new Country();
         con.setCountry(name);
         Example<Country> example = Example.of(con);
-        return countryRepository.findBy(example, FluentQuery.FetchableFluentQuery::first).orElseThrow();
+        return countryRepository.findBy(example, FluentQuery.FetchableFluentQuery::first).orElse(null);
+
     }
 
     @Override
     public List<Country> findAll() {
-        return countryRepository.findAll();
+        List<Country> list = countryRepository.findAll();
+        return list.size() > 0 ? list : null;
     }
 
     @Override
@@ -50,5 +54,10 @@ private CountryRepository countryRepository;
     @Override
     public void deleteById(int i) {
         countryRepository.deleteById(i);
+    }
+
+    @Override
+    public void deleteAll() {
+        countryRepository.deleteAll();
     }
 }

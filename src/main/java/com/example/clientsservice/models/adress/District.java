@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "districts")
@@ -21,8 +22,10 @@ public class District {
     private String district;
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_region_id"))
+    @EqualsAndHashCode.Exclude
     private Region region;
     @OneToMany(mappedBy = "district")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<City> city;
 }

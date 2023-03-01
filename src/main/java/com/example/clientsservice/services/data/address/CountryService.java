@@ -17,4 +17,6 @@ public interface CountryService {
     List<Country> findAll();
 
     void deleteById(int i);
+
+    void deleteAll();
 }
