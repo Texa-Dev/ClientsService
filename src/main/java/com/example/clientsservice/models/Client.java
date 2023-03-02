@@ -1,6 +1,7 @@
 package com.example.clientsservice.models;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,7 +22,6 @@ public class Client {
     public enum Gender {
         NONE, MALE, FEMALE
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -31,6 +31,7 @@ public class Client {
     private String name;
     @Column(length = 50, nullable = false)
     private String patronymic;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
     @Column(length = 50, nullable = false, unique = true)
     private String email;
