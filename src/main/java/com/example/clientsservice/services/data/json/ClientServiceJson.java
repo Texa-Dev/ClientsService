@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,25 +15,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-//@QualifierClientServiceJson
-public class ClientServiceJson// implements ClientService {
-{
+@QualifierClientServiceJson
+public class ClientServiceJson implements ClientService {
+
     private String fileName="clients.json";
     private Gson gson = new Gson();
-/*    @Override
-    public void saveAll(ArrayList<Client> clients) {
+
+    @Override
+    public List<Client> saveAll(List<Client> clients) {
         String s = gson.toJson(clients);
         try {
             Files.write(Path.of(fileName),s.getBytes());
         } catch (IOException e) {
            e.printStackTrace();
         }
+        return null;
     }
 
     @Override
     public Client save(Client client) {
-    ArrayList<Client> clients =  findAll();
+    List<Client> clients =  findAll();
     System.err.println(clients);
+        return null;
+    }
+
+    @Override
+    public Client findById(Integer id) {
         return null;
     }
 
@@ -45,7 +53,6 @@ public class ClientServiceJson// implements ClientService {
 
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }*/
-       // return null;
-   // }
+        }
+    }
 }

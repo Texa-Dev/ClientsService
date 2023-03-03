@@ -14,8 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-//@EqualsAndHashCode
-//
+
 @Entity
 @Table(name = "clients")
 public class Client {

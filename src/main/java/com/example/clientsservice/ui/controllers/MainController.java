@@ -8,6 +8,6 @@ public class MainController {
 
     @GetMapping("/")
     String load(){
-        return "redirect:clients";
+        return "redirect:/mustache/clients";
     }
 }

@@ -3,6 +3,7 @@ package com.example.clientsservice.ui.controllers;
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Controller
 public class ClientsController {
+    @Qualifier("clientServiceDb")
     @Autowired
     ClientService clientService;
 
@@ -25,13 +27,14 @@ public class ClientsController {
         List<Client> list = clientService.findAll();
         model.addAttribute("clients", list);
         return "clients";
+        //return "/mustache/clients";
     }
 
     @PostMapping("newClientForm")
     String newClientForm(@ModelAttribute Client client){
 
         clientService.save(client);
-        return "redirect:/clients";
+        return "redirect:/mustache/clients";
     }
     @PostMapping("clientUpdateForm")
     ModelAndView clientUpdateForm(@RequestParam("id")Integer id){
