@@ -34,11 +34,11 @@ public class ClientsController {
     String newClientForm(@ModelAttribute Client client){
 
         clientService.save(client);
-        return "redirect:/mustache/clients";
+        return "redirect:/clients";
     }
-    @PostMapping("clientUpdateForm")
-    ModelAndView clientUpdateForm(@RequestParam("id")Integer id){
-        return new ModelAndView("redirect:clientUpdate",
+    @PostMapping("clientUpdate")
+    ModelAndView clientUpdate(@RequestParam("id")Integer id){
+        return new ModelAndView("redirect:/clientUpdate",
                 new ModelMap("id",id));
     }
 }

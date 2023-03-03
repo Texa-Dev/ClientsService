@@ -87,7 +87,7 @@
                 <td th:utext="${client.gender}"></td>
                 <td th:utext="${client.email}"></td>
                 <td>
-                    <form th:action="${clientUpdateForm}" method="post">
+                    <form th:action="@{/clientUpdate}" method="post">
                         <input type="hidden" name="id" th:value="${client.id}">
                         <input type="submit" value="...">
                     </form>

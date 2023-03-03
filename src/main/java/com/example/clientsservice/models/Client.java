@@ -36,16 +36,15 @@ public class Client {
     private String email;
     @Column(nullable = false)
     private Gender gender;
-    @ManyToOne//(optional = false) // тут не уверен, создает уникальность
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_address_id"))
     @ToString.Exclude
-   // @EqualsAndHashCode.Exclude
     private Address address;
     @OneToMany(mappedBy = "client")
     @ToString.Exclude
-   // @EqualsAndHashCode.Exclude
     private Set<Phone> phones;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name ="clients_accounts",
             joinColumns = @JoinColumn(
                     table = "clients",
@@ -60,7 +59,6 @@ public class Client {
                     name = "fk_account_id")
     ))
     @ToString.Exclude
-   // @EqualsAndHashCode.Exclude
     private List<Account> accounts;
 
     @Override
