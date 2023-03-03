@@ -2,6 +2,7 @@ package com.example.clientsservice.json;
 
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.ClientService;
+import com.example.clientsservice.services.data.json.components.JsonBeenComponent;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -15,9 +16,10 @@ import java.util.List;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClientServiceJsonTest {
-    @Qualifier("clientServiceJson")
+    @Qualifier(value = "clientServiceJson")
     @Autowired
    private ClientService clientService;
+
 
     @Test
     void saveAll(){

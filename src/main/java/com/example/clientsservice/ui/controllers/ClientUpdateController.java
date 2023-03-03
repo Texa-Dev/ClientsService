@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ClientUpdateController {
     @Autowired
-    @Qualifier("clientServiceDb")
+    @Qualifier(value = "clientServiceDb")
     ClientService clientService;
 
     @GetMapping("clientUpdate")

@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @SpringBootTest
 public class ClientAddressDbTest {
 
-    @Qualifier("clientServiceDb")
+    @Qualifier(value = "clientServiceDb")
     @Autowired
     ClientService clientService;
-    @Qualifier("addressServiceDb")
+    @Qualifier(value = "addressServiceDb")
     @Autowired
     AddressService addressService;
 

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ClientServiceDbTest {
-    @Qualifier("clientServiceDb")
+    @Qualifier(value = "clientServiceDb")
     @Autowired
     ClientService clientService;
     static Client client = new Client(1, "White", "Walter", "Hartwell", LocalDate.of(1958,9,7),

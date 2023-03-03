@@ -5,6 +5,7 @@ import com.example.clientsservice.services.data.ClientService;
 import com.example.clientsservice.services.data.qualifiers.QualifierClientServiceJson;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -15,9 +16,9 @@ import java.util.List;
 @Service
 @QualifierClientServiceJson
 public class ClientServiceJson implements ClientService {
-
+    @Autowired
+    private Gson gson;
     private String fileName="clients.json";
-    private Gson gson = new Gson();
 
     @Override
     public List<Client> saveAll(List<Client> clients) {
