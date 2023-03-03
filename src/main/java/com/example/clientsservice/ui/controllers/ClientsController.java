@@ -36,9 +36,9 @@ public class ClientsController {
         clientService.save(client);
         return "redirect:/clients";
     }
- /*   @PostMapping("clientUpdate")
+    @PostMapping("clientUpdate")
     ModelAndView clientUpdate(@RequestParam("id")Integer id){
         return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id",id));
-    }*/
+    }
 }
