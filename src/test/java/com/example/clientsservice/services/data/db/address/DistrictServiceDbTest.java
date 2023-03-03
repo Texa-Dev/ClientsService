@@ -18,16 +18,16 @@ public class DistrictServiceDbTest {
     District district1=new District(2, "Poltavsky", null, null);
     District district2=new District(3, "Sumysky", null, null);
 
-    District saved;
-    List<District> savedList;
+    District testOne;
+    List<District> testList;
 
     @Test
     @Order(1)
     void save() {
-        saved = districtService.save(district);
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, district);
+        testOne = districtService.save(district);
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, district);
     }
 
 
@@ -35,44 +35,44 @@ public class DistrictServiceDbTest {
     @Order(2)
     void saveAll() {
         List<District> savingList = List.of(district1, district2);
-        savedList = districtService.saveAll(savingList);
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savingList, savedList);
+        testList = districtService.saveAll(savingList);
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(savingList, testList);
     }
 
     @Test
     @Order(3)
     void findById() {
-        saved = districtService.findByid(district.getId());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, district);
+        testOne = districtService.findById(district.getId());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, district);
     }
 
     @Test
     @Order(4)
     void findAll() {
-        savedList = districtService.findAll();
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savedList, districtService.findAll());
+        testList = districtService.findAll();
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(testList, districtService.findAll());
     }
 
     @Test
     @Order(5)
     void findByName() {
-        saved = districtService.findByName(district1.getDistrict());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, districtService.findByName(district1.getDistrict()));
+        testOne = districtService.findByName(district1.getDistrict());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, districtService.findByName(district1.getDistrict()));
     }
 
     @Test
     @Order(6)
     void deleteById() {
         districtService.deleteById(district2.getId());
-        assertNull(districtService.findByid(district2.getId()));
+        assertNull(districtService.findById(district2.getId()));
     }
 
     @Test

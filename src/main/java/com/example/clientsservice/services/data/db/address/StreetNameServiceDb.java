@@ -8,7 +8,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,7 +32,7 @@ public class StreetNameServiceDb implements StreetNameService {
     }
 
     @Override
-    public StreetName findByid(Integer id) {
+    public StreetName findById(Integer id) {
         return streetNameRepository.findById(id).orElse(null);
     }
 

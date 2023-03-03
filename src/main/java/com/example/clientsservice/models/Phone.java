@@ -1,8 +1,6 @@
 package com.example.clientsservice.models;
 
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -11,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "phones")
@@ -18,12 +17,12 @@ public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true, nullable = false, length = 10)
+    @Column(unique = true, nullable = false, length = 13)
     private String phone;
 
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_phoneClient_id"))
-    //@OnDelete(action = OnDeleteAction.CASCADE)
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Client client;
 }

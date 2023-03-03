@@ -1,9 +1,6 @@
 package com.example.clientsservice.services.data.address;
 
-import com.example.clientsservice.models.adress.Street;
 import com.example.clientsservice.models.adress.StreetName;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface StreetNameService {
@@ -13,7 +10,7 @@ public interface StreetNameService {
 
     StreetName save(StreetName streetName);
 
-    StreetName findByid(Integer id);
+    StreetName findById(Integer id);
 
     List<StreetName> findAll();
 

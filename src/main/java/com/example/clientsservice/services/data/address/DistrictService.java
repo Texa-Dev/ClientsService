@@ -1,9 +1,6 @@
 package com.example.clientsservice.services.data.address;
 
 import com.example.clientsservice.models.adress.District;
-import com.example.clientsservice.models.adress.Region;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface DistrictService {
@@ -13,7 +10,7 @@ public interface DistrictService {
 
     District getReferenceById(int i);
 
-    District findByid(Integer id);
+    District findById(Integer id);
 
     List<District> findAll();
 

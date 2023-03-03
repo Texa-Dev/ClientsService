@@ -11,7 +11,7 @@ class ClientsServiceApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(application);
+      //  System.out.println(application);
     }
 
 }

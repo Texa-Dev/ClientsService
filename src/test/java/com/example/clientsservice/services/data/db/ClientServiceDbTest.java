@@ -18,50 +18,49 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ClientServiceDbTest {
     @Autowired
     ClientService clientService;
-    static Client client = new Client(1, "Surname", "Name", "Patronymic", LocalDate.now(),
+    static Client client = new Client(1, "White", "Walter", "Hartwell", LocalDate.of(1958,9,7),
             "email@test1.com", Client.Gender.MALE, null, null, null);
-    static Client client2 = new Client(2, "Surname", "Name", "Patronymic", LocalDate.now(),
+    static Client client2 = new Client(2, "Pinkman", "Jesse", "Bruce", LocalDate.of(1982,4,15),
             "email@test2.com", Client.Gender.MALE, null, null, null);
-    static Client client3 = new Client(3, "Surname", "Name", "Patronymic", LocalDate.now(),
-            "email@test3.com", Client.Gender.MALE, null, null, null);
+    static Client client3 = new Client(3, "Goodman", "Saul", "Morgan", LocalDate.of(1960,11,12),
+            "email@test3.com", Client.Gender.FEMALE, null, null, null);
 
-static  Client saved;
-static List<Client> clients;
-static List<Client> saving;
+static  Client testOne;
+static List<Client> testList;
 
     @Test
     @Order(1)
     void save() {
-         saved = clientService.save(client);
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, client);
+         testOne = clientService.save(client);
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, client);
     }
     @Test
     @Order(2)
     void saveAll() {
-        saving =List.of(client2,client3);
-        clients = clientService.saveAll(saving);
-        clients.forEach(System.out::println);
-        assertNotNull(clients);
-        assertEquals(saving, clients);
+        List<Client> saving =List.of(client2,client3);
+        testList = clientService.saveAll(saving);
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(saving, testList);
     }
 
     @Test
     @Order(3)
     void findById() {
-        saved = clientService.findById(client.getId());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, client);
+        testOne = clientService.findById(client.getId());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, client);
     }
 
     @Test
     @Order(4)
     void findAll() {
-        clients=clientService.findAll();
-        clients.forEach(System.out::println);
-        assertEquals(clients, clientService.findAll());
+        testList =clientService.findAll();
+        testList.forEach(System.out::println);
+        assertEquals(testList, clientService.findAll());
     }
 
 }

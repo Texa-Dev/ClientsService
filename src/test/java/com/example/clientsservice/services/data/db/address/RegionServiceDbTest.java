@@ -20,60 +20,60 @@ public class RegionServiceDbTest {
     static Region region1 = new Region(2, "Chernihiv", null, null);
     static Region region2 = new Region(3, "Kharkiv", null, null);
 
-    static Region saved;
-    static List<Region> savedList;
+    static Region testOne;
+    static List<Region> testList;
 
     @Test
     @Order(1)
     void save() {
-        saved = regionService.save(region);
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, region);
+        testOne = regionService.save(region);
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, region);
     }
 
     @Test
     @Order(2)
     void saveAll() {
         List<Region> savingList = List.of(region1, region2);
-        savedList = regionService.saveAll(savingList);
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savingList, savedList);
+        testList = regionService.saveAll(savingList);
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(savingList, testList);
     }
 
     @Test
     @Order(3)
     void findById() {
-        saved = regionService.findByid(region.getId());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, region);
+        testOne = regionService.findById(region.getId());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, region);
     }
 
     @Test
     @Order(4)
     void findAll() {
-        savedList = regionService.findAll();
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savedList, regionService.findAll());
+        testList = regionService.findAll();
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(testList, regionService.findAll());
     }
 
     @Test
     @Order(5)
     void findByName() {
-        saved = regionService.findByName(region1.getRegion());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, regionService.findByName(region1.getRegion()));
+        testOne = regionService.findByName(region1.getRegion());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, regionService.findByName(region1.getRegion()));
     }
 
     @Test
     @Order(6)
     void deleteById() {
         regionService.deleteById(region2.getId());
-        assertNull(regionService.findByid(region2.getId()));
+        assertNull(regionService.findById(region2.getId()));
     }
     @Test
     @Order(7)

@@ -8,7 +8,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,7 +38,7 @@ public class RegionServiceDb implements RegionService {
     }
 
     @Override
-    public Region findByid(Integer id) {
+    public Region findById(Integer id) {
         return regionRepository.findById(id).orElse(null);
     }
 

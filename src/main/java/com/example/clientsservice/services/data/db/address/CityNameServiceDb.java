@@ -23,7 +23,7 @@ public class CityNameServiceDb implements CityNameService {
     @Override
     public CityName getReferenceById(int i) {
 
-        return cityNameRepository.findById(i).get();
+        return cityNameRepository.findById(i).orElse(null);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CityNameServiceDb implements CityNameService {
     }
 
     @Override
-    public CityName findByid(Integer id) {
+    public CityName findById(Integer id) {
         return cityNameRepository.findById(id).orElse(null);
     }
 

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -27,27 +26,16 @@ public class ClientsController {
         model.addAttribute("clients", list);
         return "clients";
     }
-    /*//@PostMapping("newClientForm")
-    String newClient(
-            @RequestParam("surname") String surname,
-            @RequestParam("name") String name,
-            @RequestParam("patronymic") String patronymic,
-            @RequestParam("birthDate") String birtDate,
-            @RequestParam("email") String email
-    ){
-        System.out.printf("%s %s %s %s %s ",surname,name,patronymic,birtDate,email);
-        return "clients";
-    }*/
 
     @PostMapping("newClientForm")
-    String newClient(@ModelAttribute Client client){
+    String newClientForm(@ModelAttribute Client client){
 
         clientService.save(client);
         return "redirect:/clients";
     }
     @PostMapping("clientUpdateForm")
     ModelAndView clientUpdateForm(@RequestParam("id")Integer id){
-        return new ModelAndView("redirect:clientUdate",
+        return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id",id));
     }
 }

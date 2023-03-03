@@ -24,45 +24,45 @@ public class CountryServiceDbTest {
     static Country country1 = new Country(2, "Poland", null);
     static Country country2 = new Country(3, "Germany", null);
 
-    static Country saved;
-    static List<Country> countries;
+    static Country testOne;
+    static List<Country> testList;
 
     @Test
     @Order(1)
     void save() {
-        saved = countryService.save(country);
-        assertNotNull(saved);
-        assertEquals(saved, country);
-        System.out.println(saved);
+        testOne = countryService.save(country);
+        assertNotNull(testOne);
+        assertEquals(testOne, country);
+        System.out.println(testOne);
     }
 
     @Test
     @Order(2)
     void saveAll() {
         List<Country> savedAll = List.of(country1, country2);
-        countries = countryService.saveAll(savedAll);
-        countries.forEach(System.out::println);
-        assertNotNull(countries);
-        assertEquals(savedAll, countries);
+        testList = countryService.saveAll(savedAll);
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(savedAll, testList);
     }
 
     @Test
     @Order(3)
     void findById() {
-        saved = countryService.findById(country1.getId());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, country1);
+        testOne = countryService.findById(country1.getId());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, country1);
 
     }
 
     @Test
     @Order(4)
     void findByName() {
-        saved = countryService.findByName(country.getCountry());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, country);
+        testOne = countryService.findByName(country.getCountry());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, country);
 
     }
 

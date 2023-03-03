@@ -6,7 +6,7 @@ import com.example.clientsservice.services.data.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AddressServiceDb implements AddressService {
@@ -14,16 +14,34 @@ public class AddressServiceDb implements AddressService {
     private AddressRepository addressRepository;
 
     @Override
-    public void save(Address address) {
-        addressRepository.save(address);
-    }
-    @Override
-    public void saveAll(ArrayList<Address> addresses) {
-        addressRepository.saveAll(addresses);
+    public Address save(Address address) {
+        return addressRepository.save(address);
     }
 
     @Override
-    public Address getById(int i) {
-        return addressRepository.getReferenceById(i);
+    public List<Address> saveAll(List<Address> addresses) {
+        List<Address> list = addressRepository.saveAll(addresses);
+        return list.size() > 0 ? list : null;
+    }
+
+    @Override
+    public Address findById(Integer id) {
+        return addressRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        addressRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Address> findAll() {
+        List<Address> list = addressRepository.findAll();
+        return list.size() > 0 ? list : null;
+    }
+
+    @Override
+    public void deleteAll() {
+        addressRepository.deleteAll();
     }
 }

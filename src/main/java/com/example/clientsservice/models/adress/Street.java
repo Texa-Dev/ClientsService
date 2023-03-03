@@ -10,27 +10,28 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "streets")
 public class Street {
-    private enum StreetType{
+    public enum StreetType{
         STREET,
         AVENUE,
         DRIVE,
         COURT,
         LANE,
         ALLEY
-
-
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private StreetType streetType;
     @ManyToOne
+    @EqualsAndHashCode.Exclude
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetName_id"))
     private StreetName streetName;
     @OneToOne(mappedBy = "street")
+    @EqualsAndHashCode.Exclude
     private Address address;
 }

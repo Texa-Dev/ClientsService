@@ -11,7 +11,7 @@ public interface RegionService {
 
     List<Region> findAll();
 
-    Region findByid(Integer id);
+    Region findById(Integer id);
 
     Region findByName(String region);
 

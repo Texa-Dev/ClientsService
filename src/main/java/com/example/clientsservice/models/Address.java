@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "addresses")
@@ -23,14 +24,17 @@ public class Address {
     private String apartment;
     @OneToMany(mappedBy = "address")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Client> client;
     @OneToOne
     @JoinColumn(foreignKey =  @ForeignKey(name = "fk_city_id"))
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private City city;
     @OneToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_street_id"))
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Street street;
 
 }

@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "accounts")
@@ -17,8 +18,9 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false,columnDefinition = "int default 0")
-    private int amount;
+    private double amount;
     @ManyToMany(mappedBy = "accounts")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Client> clients;
 }

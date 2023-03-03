@@ -2,12 +2,18 @@ package com.example.clientsservice.services.data;
 
 import com.example.clientsservice.models.Address;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface AddressService {
-    void save(Address address);
+    Address save(Address address);
 
-    void saveAll(ArrayList<Address> addresses);
+    List<Address> saveAll(List<Address> addresses);
 
-    Address getById(int i);
+    Address findById(Integer id);
+
+    void deleteById(Integer id);
+
+    List<Address> findAll();
+
+    void deleteAll();
 }

@@ -10,11 +10,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 //
 @Entity
 @Table(name = "cities")
 public class City {
-  private  enum CityType{
+  public  enum CityType{
         CAPITAL,
         TOWN,
         CITY,
@@ -26,13 +27,16 @@ public class City {
 
     private CityType cityType;
     @ManyToOne
+    @EqualsAndHashCode.Exclude
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_district_id"))
     private District district;
 
     @ManyToOne
+    @EqualsAndHashCode.Exclude
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_cityName_id"))
     private CityName cityName;
 
     @OneToOne(mappedBy = "city")
+    @EqualsAndHashCode.Exclude
     private Address address;
 }

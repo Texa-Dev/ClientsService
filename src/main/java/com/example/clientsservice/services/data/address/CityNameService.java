@@ -2,7 +2,6 @@ package com.example.clientsservice.services.data.address;
 
 import com.example.clientsservice.models.adress.CityName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CityNameService {
@@ -12,7 +11,7 @@ public interface CityNameService {
 
     CityName save(CityName cityName);
 
-    CityName findByid(Integer id);
+    CityName findById(Integer id);
 
     List<CityName> findAll();
 

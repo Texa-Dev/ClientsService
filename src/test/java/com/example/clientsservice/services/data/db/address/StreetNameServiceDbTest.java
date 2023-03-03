@@ -18,16 +18,16 @@ public class StreetNameServiceDbTest {
     static StreetName streetName1=new StreetName(2, "Spring", null);
     static StreetName streetName2=new StreetName(3, "Central", null);
 
-    static StreetName saved;
-    static List<StreetName> savedList;
+    static StreetName testOne;
+    static List<StreetName> testList;
 
     @Test
     @Order(1)
     void save() {
-        saved = streetNameService.save(streetName);
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, streetName);
+        testOne = streetNameService.save(streetName);
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, streetName);
     }
 
 
@@ -35,44 +35,44 @@ public class StreetNameServiceDbTest {
     @Order(2)
     void saveAll() {
         List<StreetName> savingList = List.of(streetName1, streetName2);
-        savedList = streetNameService.saveAll(savingList);
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savingList, savedList);
+        testList = streetNameService.saveAll(savingList);
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(savingList, testList);
     }
 
     @Test
     @Order(3)
     void findById() {
-        saved = streetNameService.findByid(streetName.getId());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, streetName);
+        testOne = streetNameService.findById(streetName.getId());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, streetName);
     }
 
     @Test
     @Order(4)
     void findAll() {
-        savedList = streetNameService.findAll();
-        savedList.forEach(System.out::println);
-        assertNotNull(savedList);
-        assertEquals(savedList, streetNameService.findAll());
+        testList = streetNameService.findAll();
+        testList.forEach(System.out::println);
+        assertNotNull(testList);
+        assertEquals(testList, streetNameService.findAll());
     }
 
     @Test
     @Order(5)
     void findByName() {
-        saved = streetNameService.findByName(streetName1.getStreetName());
-        System.out.println(saved);
-        assertNotNull(saved);
-        assertEquals(saved, streetNameService.findByName(streetName1.getStreetName()));
+        testOne = streetNameService.findByName(streetName1.getStreetName());
+        System.out.println(testOne);
+        assertNotNull(testOne);
+        assertEquals(testOne, streetNameService.findByName(streetName1.getStreetName()));
     }
 
     @Test
     @Order(6)
     void deleteById() {
         streetNameService.deleteById(streetName2.getId());
-        assertNull(streetNameService.findByid(streetName2.getId()));
+        assertNull(streetNameService.findById(streetName2.getId()));
     }
     @Test
     @Order(7)
