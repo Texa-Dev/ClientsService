@@ -33,4 +33,14 @@ public class ClientServiceDb implements ClientService {
     public List<Client> saveAll(List<Client> clients) {
         return clientRepository.saveAll(clients);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        clientRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAll() {
+        clientRepository.deleteAll();
+    }
 }
