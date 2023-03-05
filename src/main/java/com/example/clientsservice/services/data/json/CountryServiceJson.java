@@ -1,6 +1,5 @@
 package com.example.clientsservice.services.data.json;
 
-import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.adress.Country;
 import com.example.clientsservice.services.data.address.CountryService;
 import com.example.clientsservice.services.data.qualifiers.QualifierCountryServiceJson;
@@ -22,6 +21,7 @@ public class CountryServiceJson implements CountryService {
     private Gson gson;
     private String fileName = "countries.json";
     private String json;
+
     @Override
     public Country save(Country country) {
         json = gson.toJson(country);
@@ -48,7 +48,7 @@ public class CountryServiceJson implements CountryService {
     public Country findById(int i) {
         List<Country> all = findAll();
         for (Country country : all) {
-            if(Objects.equals(country.getId(), i)){
+            if (Objects.equals(country.getId(), i)) {
                 return country;
             }
         }
@@ -59,7 +59,7 @@ public class CountryServiceJson implements CountryService {
     public Country getReferenceById(int i) {
         List<Country> all = findAll();
         for (Country country : all) {
-            if(Objects.equals(country.getId(), i)){
+            if (Objects.equals(country.getId(), i)) {
                 return country;
             }
         }
@@ -69,12 +69,9 @@ public class CountryServiceJson implements CountryService {
     @Override
     public Country findByName(String name) {
         List<Country> all = findAll();
-        for (Country country : all) {
-            if(Objects.equals(country.getCountry(), name)){
-                return country;
-            }
-        }
-        return null;
+        return all.stream().filter(country -> country.getCountry().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -92,7 +89,9 @@ public class CountryServiceJson implements CountryService {
 
     @Override
     public void deleteById(int i) {
-
+        List<Country> all = findAll();
+        all.removeIf(country -> country.getId() == i);
+        saveAll(all);
     }
 
     @Override
