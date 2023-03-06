@@ -17,7 +17,7 @@ public class CityServiceDbTest {
     CityService cityService;
     City city = new City(1, City.CityType.CAPITAL, null,null,null);
     City city1 = new City(2, City.CityType.TOWN, null,null,null);
-    City city2 = new City(3, City.CityType.VILLAGE, null,null,null);
+    City city2 = new City(3, City.CityType.CITY, null,null,null);
 
     City testOne;
     List<City> testList;
