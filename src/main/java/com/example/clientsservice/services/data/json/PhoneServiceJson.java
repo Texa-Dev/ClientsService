@@ -1,5 +1,4 @@
 package com.example.clientsservice.services.data.json;
-import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.PhoneService;
 import com.example.clientsservice.services.data.qualifiers.QualifierPhoneServiceJson;
@@ -30,7 +29,7 @@ public class PhoneServiceJson implements PhoneService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return phone;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class PhoneServiceJson implements PhoneService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return savingList.size()>0?savingList:null;
     }
 
     @Override
@@ -55,8 +54,9 @@ public class PhoneServiceJson implements PhoneService {
         try {
             byte[] bytes = Files.readAllBytes(Path.of(fileName));
             String json = new String(bytes);
-            return gson.fromJson(json, new TypeToken<List<Phone>>() {
+            List<Phone> phones = gson.fromJson(json, new TypeToken<List<Phone>>() {
             }.getType());
+            return phones.size()>0?phones:null;
 
         } catch (IOException e) {
             throw new RuntimeException(e);

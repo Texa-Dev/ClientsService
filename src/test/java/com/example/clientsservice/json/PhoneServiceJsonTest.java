@@ -1,13 +1,13 @@
-package com.example.clientsservice.services.data.db;
+package com.example.clientsservice.json;
 
 import com.example.clientsservice.models.Phone;
+import com.example.clientsservice.services.data.qualifiers.QualifierPhoneServiceJson;
 import org.junit.jupiter.api.MethodOrderer;
 import com.example.clientsservice.services.data.PhoneService;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -16,9 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PhoneServiceDbTest {
+public class PhoneServiceJsonTest {
+
     @Autowired
-    @Qualifier("phoneServiceDb")
+    @QualifierPhoneServiceJson
     PhoneService phoneService;
     static Phone phone = new Phone(1, "+380508005038", null);
     static Phone phone1 = new Phone(2, "+38051234567", null);
@@ -83,3 +84,5 @@ public class PhoneServiceDbTest {
     }
 
 }
+
+

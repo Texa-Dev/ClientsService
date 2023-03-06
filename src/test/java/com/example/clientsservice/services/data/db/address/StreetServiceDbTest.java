@@ -1,8 +1,10 @@
 package com.example.clientsservice.services.data.db.address;
+
 import com.example.clientsservice.models.adress.Street;
 import com.example.clientsservice.services.data.address.StreetService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -13,13 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StreetServiceDbTest {
     @Autowired
+    @Qualifier("streetServiceDb")
     StreetService streetService;
 
-    Street street = new Street(1, Street.StreetType.STREET,null,null);
-    Street street1 = new Street(2, Street.StreetType.AVENUE,null,null);
-    Street street2 = new Street(3, Street.StreetType.COURT,null,null);
+    Street street = new Street(1, Street.StreetType.STREET, null, null);
+    Street street1 = new Street(2, Street.StreetType.AVENUE, null, null);
+    Street street2 = new Street(3, Street.StreetType.COURT, null, null);
 
-     static Street testOne;
+    static Street testOne;
     static List<Street> testList;
 
     @Test
@@ -67,6 +70,7 @@ public class StreetServiceDbTest {
         streetService.deleteById(street2.getId());
         assertNull(streetService.findById(street2.getId()));
     }
+
     @Test
     @Order(7)
     void deleteAll() {

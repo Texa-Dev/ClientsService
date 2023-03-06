@@ -1,4 +1,4 @@
-package com.example.clientsservice.services.data.db;
+package com.example.clientsservice.json;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.services.data.AddressService;
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -17,9 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class AddressServiceDbTest {
+public class AddressServiceJsonTest {
+
     @Autowired
-    @Qualifier("addressServiceDb")
+    @QualifierAddressServiceJson
     AddressService addressService;
 
     static Address address = new Address(1, "10", "4", null, null, null);
@@ -108,3 +108,5 @@ public class AddressServiceDbTest {
         addresses.add(new Address(0, "5", "4", null, cityService.getReferenceById(4), streetService.getReferenceById(6)));
 
         addressService.saveAll(addresses);*/
+
+

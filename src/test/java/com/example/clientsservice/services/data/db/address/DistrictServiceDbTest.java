@@ -3,6 +3,7 @@ import com.example.clientsservice.models.adress.District;
 import com.example.clientsservice.services.data.address.DistrictService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DistrictServiceDbTest {
     @Autowired
+    @Qualifier("districtServiceDb")
     DistrictService districtService;
     District district=new District(1, "Kremenchugsky", null, null);
     District district1=new District(2, "Poltavsky", null, null);

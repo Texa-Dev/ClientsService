@@ -4,6 +4,7 @@ import com.example.clientsservice.models.adress.CityName;
 import com.example.clientsservice.services.data.address.CityNameService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CityNameDbTest {
     @Autowired
+    @Qualifier("cityNameServiceDb")
     CityNameService cityNameService;
     static CityName cityName = new CityName(1, "Kremenchuk", null);
     static CityName cityName1 = new CityName(2, "Poltava", null);
@@ -21,7 +23,8 @@ public class CityNameDbTest {
 
     static CityName testOne;
     static List<CityName> testList;
-@Test
+
+    @Test
     @Order(1)
     void save() {
         testOne = cityNameService.save(cityName);
@@ -74,6 +77,7 @@ public class CityNameDbTest {
         cityNameService.deleteById(cityName2.getId());
         assertNull(cityNameService.findById(cityName2.getId()));
     }
+
     @Test
     @Order(7)
     void deleteAll() {

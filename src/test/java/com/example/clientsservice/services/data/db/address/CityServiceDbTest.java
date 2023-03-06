@@ -4,6 +4,7 @@ import com.example.clientsservice.models.adress.City;
 import com.example.clientsservice.services.data.address.CityService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CityServiceDbTest {
     @Autowired
+    @Qualifier("cityServiceDb")
     CityService cityService;
     City city = new City(1, City.CityType.CAPITAL, null,null,null);
     City city1 = new City(2, City.CityType.TOWN, null,null,null);

@@ -3,6 +3,7 @@ import com.example.clientsservice.models.adress.StreetName;
 import com.example.clientsservice.services.data.address.StreetNameService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StreetNameServiceDbTest {
     @Autowired
+    @Qualifier("streetNameServiceDb")
     StreetNameService streetNameService;
     static StreetName streetName=new StreetName(1, "Floral", null);
     static StreetName streetName1=new StreetName(2, "Spring", null);

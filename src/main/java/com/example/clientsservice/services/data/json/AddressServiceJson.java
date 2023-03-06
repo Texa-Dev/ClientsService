@@ -30,7 +30,7 @@ public class AddressServiceJson implements AddressService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return address;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class AddressServiceJson implements AddressService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return addresses.size()>0?addresses:null;
     }
 
     @Override
@@ -62,8 +62,9 @@ public class AddressServiceJson implements AddressService {
         try {
             byte[] bytes = Files.readAllBytes(Path.of(fileName));
             String json = new String(bytes);
-            return gson.fromJson(json, new TypeToken<List<Address>>() {
+            List<Address> addresses = gson.fromJson(json, new TypeToken<List<Address>>() {
             }.getType());
+            return addresses.size()>0?addresses:null;
 
         } catch (IOException e) {
             throw new RuntimeException(e);

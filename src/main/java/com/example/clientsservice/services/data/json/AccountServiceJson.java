@@ -1,4 +1,5 @@
 package com.example.clientsservice.services.data.json;
+
 import com.example.clientsservice.models.Account;
 import com.example.clientsservice.services.data.AccountService;
 import com.example.clientsservice.services.data.qualifiers.QualifierAccountServiceJson;
@@ -29,7 +30,7 @@ public class AccountServiceJson implements AccountService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return account;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class AccountServiceJson implements AccountService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return savingList.size() > 0 ? savingList : null;
     }
 
     @Override
@@ -54,10 +55,12 @@ public class AccountServiceJson implements AccountService {
         try {
             byte[] bytes = Files.readAllBytes(Path.of(fileName));
             String json = new String(bytes);
-            return gson.fromJson(json, new TypeToken<List<Account>>() {
+            List<Account> accounts = gson.fromJson(json, new TypeToken<List<Account>>() {
             }.getType());
+            return accounts.size() > 0 ? accounts : null;
 
         } catch (IOException e) {
+
             throw new RuntimeException(e);
         }
     }

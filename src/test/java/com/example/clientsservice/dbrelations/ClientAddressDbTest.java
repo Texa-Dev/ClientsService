@@ -29,5 +29,6 @@ public class ClientAddressDbTest {
         client = clientService.save(client);
         address=addressService.save(address);
         client.setAddress(address);
+        System.out.println(client);
     }
 }

@@ -4,6 +4,7 @@ import com.example.clientsservice.models.adress.Region;
 import com.example.clientsservice.services.data.address.RegionService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RegionServiceDbTest {
     @Autowired
+    @Qualifier("regionServiceDb")
     RegionService regionService;
 
     static Region region = new Region(1, "Cherkasy", null, null);
