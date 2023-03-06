@@ -2,6 +2,7 @@ package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.services.data.AddressService;
+import com.example.clientsservice.services.data.qualifiers.QualifierAddressServiceJson;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AddressServiceDbTest {
     @Autowired
+    @QualifierAddressServiceJson
     AddressService addressService;
 
     static Address address = new Address(1, "10", "4", null, null, null);
@@ -25,7 +27,7 @@ public class AddressServiceDbTest {
     static Address testOne;
     static List<Address> testList;
 
-     @Test
+    @Test
     @Order(1)
     void save() {
         testOne = addressService.save(address);
@@ -75,7 +77,7 @@ public class AddressServiceDbTest {
     @Test
     @Order(5)
     void deleteAll() {
-       // addressService.findAll().forEach(System.out::println);
+        // addressService.findAll().forEach(System.out::println);
         addressService.deleteAll();
         assertNull(addressService.findAll());
     }

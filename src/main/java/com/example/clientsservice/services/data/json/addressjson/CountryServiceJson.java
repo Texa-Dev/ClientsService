@@ -1,8 +1,8 @@
-package com.example.clientsservice.services.data.json;
+package com.example.clientsservice.services.data.json.addressjson;
 
 import com.example.clientsservice.models.adress.Country;
 import com.example.clientsservice.services.data.address.CountryService;
-import com.example.clientsservice.services.data.qualifiers.QualifierCountryServiceJson;
+import com.example.clientsservice.services.data.qualifiers.addressqaulifiers.QualifierCountryServiceJson;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +96,8 @@ public class CountryServiceJson implements CountryService {
 
     @Override
     public void deleteAll() {
-
+        List<Country> all = findAll();
+        all.clear();
+        saveAll(all);
     }
 }

@@ -1,8 +1,7 @@
 package com.example.clientsservice.services.data.json;
-
-import com.example.clientsservice.models.Client;
-import com.example.clientsservice.services.data.ClientService;
-import com.example.clientsservice.services.data.qualifiers.QualifierClientServiceJson;
+import com.example.clientsservice.models.Account;
+import com.example.clientsservice.services.data.AccountService;
+import com.example.clientsservice.services.data.qualifiers.QualifierAccountServiceJson;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,49 +14,48 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-@QualifierClientServiceJson
-public class ClientServiceJson implements ClientService {
+@QualifierAccountServiceJson
+public class AccountServiceJson implements AccountService {
     @Autowired
     private Gson gson;
-    private String fileName = "clients.json";
+    private String fileName = "accounts.json";
     private String json;
 
     @Override
-    public List<Client> saveAll(List<Client> clients) {
-        json = gson.toJson(clients);
+    public Account save(Account account) {
+        json = gson.toJson(account);
         try {
             Files.write(Path.of(fileName), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return clients;
+        return null;
     }
 
     @Override
-    public Client save(Client client) {
-        json = gson.toJson(client);
+    public List<Account> saveAll(List<Account> savingList) {
+        json = gson.toJson(savingList);
         try {
             Files.write(Path.of(fileName), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return client;
+        return null;
     }
 
     @Override
-    public Client findById(Integer id) {
-        List<Client> all = findAll();
-        return all.stream().filter(client -> Objects.equals(client.getId(), id)).findFirst().orElse(null);
+    public Account findById(Long id) {
+        List<Account> all = findAll();
+        return all.stream().filter(account -> Objects.equals(account.getId(), id)).findFirst().orElse(null);
     }
 
     @Override
-    public List<Client> findAll() {
+    public List<Account> findAll() {
         try {
             byte[] bytes = Files.readAllBytes(Path.of(fileName));
             String json = new String(bytes);
-            List<Client> clients = gson.fromJson(json, new TypeToken<List<Client>>() {
+            return gson.fromJson(json, new TypeToken<List<Account>>() {
             }.getType());
-            return clients.size() > 0 ? clients : null;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -65,15 +63,15 @@ public class ClientServiceJson implements ClientService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        List<Client> all = findAll();
-        all.removeIf(client -> Objects.equals(client.getId(), id));
+    public void deleteById(Long id) {
+        List<Account> all = findAll();
+        all.removeIf(account -> Objects.equals(account.getId(), id));
         saveAll(all);
     }
 
     @Override
     public void deleteAll() {
-        List<Client> all = findAll();
+        List<Account> all = findAll();
         all.clear();
         saveAll(all);
     }
