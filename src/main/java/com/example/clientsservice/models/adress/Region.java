@@ -5,8 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -28,4 +29,5 @@ public class Region {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<District> district;
-}
+
+   }

@@ -20,4 +20,5 @@ public interface CountryService {
     void deleteById(int i);
 
     void deleteAll();
+
 }

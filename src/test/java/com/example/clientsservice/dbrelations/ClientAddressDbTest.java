@@ -21,7 +21,7 @@ public class ClientAddressDbTest {
     @Autowired
     AddressService addressService;
 
-    static Client client = new Client(0, "s","n","p", LocalDate.now(),"E@t.ua", Client.Gender.MALE, null,null,null);
+    static Client client = new Client(0, "s","n","p", LocalDate.now(),"E1@t.ua", Client.Gender.MALE, null,null,null);
     static Address address = new Address(0,"12","45",null,null,null);
 
     @Test
@@ -30,5 +30,6 @@ public class ClientAddressDbTest {
         address=addressService.save(address);
         client.setAddress(address);
         System.out.println(client);
+        System.out.println(address.getClient());
     }
 }
