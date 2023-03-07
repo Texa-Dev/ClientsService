@@ -1,6 +1,6 @@
 package com.example.clientsservice.services.data.db.address;
 
-import com.example.clientsservice.models.adress.Country;
+import com.example.clientsservice.models.address.Country;
 import com.example.clientsservice.services.data.address.CountryService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;

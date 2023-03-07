@@ -1,10 +1,11 @@
 package com.example.clientsservice.services.data.db.address;
 
-import com.example.clientsservice.models.adress.Country;
+import com.example.clientsservice.models.address.Country;
 import com.example.clientsservice.repositories.address.CountryRepository;
 import com.example.clientsservice.services.data.address.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,7 @@ public class CountryServiceDb implements CountryService {
 
     @Override
     public List<Country> findAll() {
-        List<Country> list = countryRepository.findAll();
+        List<Country> list = countryRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
         return list.size() > 0 ? list : null;
     }
 

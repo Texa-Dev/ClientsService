@@ -1,7 +1,7 @@
 package com.example.clientsservice.dbrelations;
 
-import com.example.clientsservice.models.adress.Country;
-import com.example.clientsservice.models.adress.Region;
+import com.example.clientsservice.models.address.Country;
+import com.example.clientsservice.models.address.Region;
 import com.example.clientsservice.services.data.address.CountryService;
 import com.example.clientsservice.services.data.address.RegionService;
 import org.junit.jupiter.api.Test;

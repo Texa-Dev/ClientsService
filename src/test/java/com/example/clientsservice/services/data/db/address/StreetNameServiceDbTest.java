@@ -1,5 +1,5 @@
 package com.example.clientsservice.services.data.db.address;
-import com.example.clientsservice.models.adress.StreetName;
+import com.example.clientsservice.models.address.StreetName;
 import com.example.clientsservice.services.data.address.StreetNameService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;

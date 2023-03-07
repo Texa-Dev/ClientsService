@@ -1,6 +1,6 @@
 package com.example.clientsservice.services.data.address;
 
-import com.example.clientsservice.models.adress.StreetName;
+import com.example.clientsservice.models.address.StreetName;
 import java.util.List;
 
 public interface StreetNameService {

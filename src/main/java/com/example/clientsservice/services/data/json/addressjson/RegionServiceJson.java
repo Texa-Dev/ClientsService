@@ -1,6 +1,6 @@
 package com.example.clientsservice.services.data.json.addressjson;
 
-import com.example.clientsservice.models.adress.Region;
+import com.example.clientsservice.models.address.Region;
 import com.example.clientsservice.services.data.address.RegionService;
 import com.example.clientsservice.services.data.qualifiers.addressqaulifiers.QualifierRegionServiceJson;
 import com.google.gson.Gson;

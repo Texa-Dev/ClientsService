@@ -1,5 +1,5 @@
 package com.example.clientsservice.services.data.json.addressjson;
-import com.example.clientsservice.models.adress.Street;
+import com.example.clientsservice.models.address.Street;
 import com.example.clientsservice.services.data.address.StreetService;
 import com.example.clientsservice.services.data.qualifiers.addressqaulifiers.QualifierStreetServiceJson;
 import com.google.gson.Gson;

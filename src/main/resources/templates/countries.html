@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <th:block th:insert="~{/fragments/settings-head::settings-head}">
+    </th:block>
+</head>
+<body>
+<th:block th:insert="~{/fragments/header::header}"></th:block>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="section-title">
+                <h2>Countries</h2>
+            </div>
+        </div>
+    </div>
+    <div class="clientsTable">
+        <table class="table table-bordered table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Country</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!--/*@thymesVar id="countries" type="List<Country>"*/-->
+            <tr th:each="country:${countries}">
+                <td th:utext="${country.id}"></td>
+                <td th:utext="${country.country}"></td>
+                <td>
+                    <form th:action="@{countryUpdate}" method="post">
+                        <input type="hidden" name="id" th:value="${country.id}">
+                        <input type="submit" value="...">
+                    </form>
+
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.example.clientsservice.models;
-import com.example.clientsservice.models.adress.City;
-import com.example.clientsservice.models.adress.Street;
+import com.example.clientsservice.models.address.City;
+import com.example.clientsservice.models.address.Street;
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
