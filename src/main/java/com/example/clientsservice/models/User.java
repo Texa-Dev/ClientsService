@@ -31,9 +31,9 @@ public class User {
     @Column(nullable = false, unique = true)
     @NonNull
     private String email;
-    @Column(columnDefinition = "ENUM Status ('CREATED', 'ACTIVE', 'BLOCKED') default 'CREATED'")
+    @Column(columnDefinition = "ENUM ('CREATED', 'ACTIVE', 'BLOCKED') default 'CREATED'")
     private Status status;
-    @Column(columnDefinition = "ENUM Role ('ADMIN', 'USER', 'READER') default 'USER'")
+    @Column(columnDefinition = "ENUM ('ADMIN', 'USER', 'READER') default 'USER'")
 
     private Role role;
 }
