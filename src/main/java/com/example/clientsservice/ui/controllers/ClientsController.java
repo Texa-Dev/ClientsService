@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.*;
 import java.util.List;
 
 @Controller
@@ -41,4 +42,10 @@ public class ClientsController {
         return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id",id));
     }
+
+   /* @PostMapping("clientDelete")
+     String clientDelete(@RequestParam("id")Integer id){
+        return new P("redirect:clientUpdate",
+                new ModelMap("id",id));
+    }*/
 }

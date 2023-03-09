@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
     <th:block th:insert="~{/fragments/settings-head::settings-head}">
     </th:block>
 </head>
-<body >
+<body>
 <th:block th:insert="~{/fragments/header::header}"></th:block>
 <div class="row">
     <div class="col-lg-12 text-center">
@@ -87,14 +87,16 @@
                 <td th:utext="${client.gender}"></td>
                 <td th:utext="${client.email}"></td>
                 <td>
-                    <form th:action="@{clientUpdate}" method="post">
-                        <input type="hidden" name="id" th:value="${client.id}">
-                        <input type="submit" value="...">
-                    </form>
-                    <!--<form th:action="@{clientUpdate}" method="post">
-                        <input type="hidden" name="id" th:value="${client.id}">
-                        <input type="submit" value="Del">
-                    </form>-->
+                    <div class="form-group d-flex justify-content-between">
+                        <form th:action="@{clientUpdate}" method="post">
+                            <input type="hidden" name="id" th:value="${client.id}">
+                            <input type="submit" value="...">
+                        </form>
+                        <form th:action="@{clientDelete}" method="post">
+                            <input type="hidden" name="id" th:value="${client.id}">
+                            <input type="submit" value="Del">
+                        </form>
+                    </div>
                 </td>
             </tr>
 
