@@ -6,6 +6,8 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -19,10 +21,19 @@ public class UserServiceDbTest {
     User userExp;
     User userAct;
 
+    List<User> userList;
+
     @Test
     @Order(1)
     void save() {
-        userService.save(userExp);
+        userAct = userService.save(userExp);
         assertEquals(userExp, userAct);
+    }
+
+    @Test
+    @Order(1)
+    void findAll() {
+        userList = userService.findAll();
+        assertEquals(userList, userService.findAll());
     }
 }

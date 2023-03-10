@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class ModelSource {
     @Bean
     public User userInstance() {
-        return new User();
+        return new User(1,"user","qwerty","user@mail.com");
     }
 }

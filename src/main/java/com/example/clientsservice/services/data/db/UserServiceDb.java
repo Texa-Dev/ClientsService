@@ -6,12 +6,20 @@ import com.example.clientsservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceDb implements UserService {
-@Autowired
-    UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
-    public User save(User userExp) {
-        return userRepository.save(userExp);
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 }

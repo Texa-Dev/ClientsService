@@ -17,7 +17,10 @@ import javax.persistence.*;
 public class User {
     public enum Status {CREATED, ACTIVE, BLOCKED}
     public enum Role {ADMIN, USER, READER}
-
+    {
+        status=Status.CREATED;
+        role=Role.USER;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NonNull
@@ -31,9 +34,14 @@ public class User {
     @Column(nullable = false, unique = true)
     @NonNull
     private String email;
-    @Column(columnDefinition = "ENUM ('CREATED', 'ACTIVE', 'BLOCKED') default 'CREATED'")
+    @Column(nullable = false,
+            columnDefinition = "int(1) default 2"
+          //  columnDefinition = "ENUM ('CREATED', 'ACTIVE', 'BLOCKED') default 'CREATED'"
+    )
     private Status status;
-    @Column(columnDefinition = "ENUM ('ADMIN', 'USER', 'READER') default 'USER'")
-
+    @Column(nullable = false,
+           // columnDefinition = "ENUM ('ADMIN', 'USER', 'READER') default 'USER'"
+           columnDefinition = "int(1) default 0"
+    )
     private Role role;
 }
