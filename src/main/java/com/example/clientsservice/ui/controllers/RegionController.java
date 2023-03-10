@@ -29,7 +29,8 @@ public class RegionController {
     @GetMapping("countryRegions")
     public String load(Model model, @RequestParam("id") Integer id) {
         List<Region> regions = countryService.findById(id).getRegion();
-        /*  List<Region> regions = regionService.findAll().stream().
+        /*@Transaction
+          List<Region> regions = regionService.findAll().stream().
                filter(region -> Objects.equals(region.getCountry().getId(), id)).toList();*/
         model.addAttribute("regions", regions).addAttribute("country_id", id);
         return "countryRegions";

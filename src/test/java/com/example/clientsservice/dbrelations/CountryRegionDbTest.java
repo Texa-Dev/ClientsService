@@ -28,6 +28,7 @@ public class CountryRegionDbTest {
             region.setCountry(country);
         }
         countryService.save(country);
+        System.out.println(country.getRegion());
         regionService.saveAll(all);
     }
 }

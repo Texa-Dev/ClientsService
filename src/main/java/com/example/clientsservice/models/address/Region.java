@@ -26,7 +26,7 @@ public class Region {
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_country_id"))
     @EqualsAndHashCode.Exclude
     private Country country;
-    @OneToMany(mappedBy = "region", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "region", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<District> district;
