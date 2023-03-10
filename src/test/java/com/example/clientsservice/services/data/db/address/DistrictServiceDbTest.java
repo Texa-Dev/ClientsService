@@ -36,7 +36,7 @@ public class DistrictServiceDbTest {
     @Test
     @Order(2)
     void saveAll() {
-        List<District> savingList = List.of(district1, district2);
+        List<District> savingList = List.of(district1, district2, district);
         testList = districtService.saveAll(savingList);
         testList.forEach(System.out::println);
         assertNotNull(testList);

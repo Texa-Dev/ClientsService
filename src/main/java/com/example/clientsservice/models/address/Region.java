@@ -5,7 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Getter
@@ -20,12 +20,13 @@ public class Region {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50, nullable = false,unique = true)
+    @NonNull
     private String region;
     @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_country_id"))
     @EqualsAndHashCode.Exclude
     private Country country;
-    @OneToMany(mappedBy = "region")
+    @OneToMany(mappedBy = "region", fetch = FetchType.EAGER)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<District> district;

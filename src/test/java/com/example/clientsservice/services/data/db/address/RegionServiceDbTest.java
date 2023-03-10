@@ -18,9 +18,9 @@ public class RegionServiceDbTest {
     @Qualifier("regionServiceDb")
     RegionService regionService;
 
-    static Region region = new Region(1, "Cherkasy", null, null);
-    static Region region1 = new Region(2, "Chernihiv", null, null);
-    static Region region2 = new Region(3, "Kharkiv", null, null);
+    static Region region = new Region(1, "Poltava", null, null);
+    static Region region1 = new Region(2, "Kiev", null, null);
+    static Region region2 = new Region(3, "Sumy", null, null);
 
     static Region testOne;
     static List<Region> testList;
@@ -37,7 +37,7 @@ public class RegionServiceDbTest {
     @Test
     @Order(2)
     void saveAll() {
-        List<Region> savingList = List.of(region1, region2);
+        List<Region> savingList = List.of(region1, region2, region);
         testList = regionService.saveAll(savingList);
         testList.forEach(System.out::println);
         assertNotNull(testList);
