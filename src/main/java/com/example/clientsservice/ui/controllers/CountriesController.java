@@ -15,22 +15,33 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class CountryController {
+public class CountriesController {
     @Autowired
     @Qualifier("countryServiceDb")
     CountryService countryService;
 
-    @GetMapping("country")
-    String load(Model model){
+    @GetMapping("countries")
+    String load(Model model) {
 
         List<Country> countries = countryService.findAll();
-        model.addAttribute("countries",countries);
+        model.addAttribute("countries", countries);
         return "countries";
     }
 
     @PostMapping("countryRegions")
-    ModelAndView regionUpdate(@RequestParam("id")Integer id){
+    ModelAndView regionUpdate(@RequestParam("id") Integer id) {
         return new ModelAndView("redirect:countryRegions",
-                new ModelMap("id",id));
+                new ModelMap("id", id));
+    }
+
+    @PostMapping("addNewCountry")
+    String addNewCountry(@RequestParam("countryName") String countryName) {
+        Country country = countryService.findByName(countryName);
+        if (country == null) {
+            country = new Country(0, countryName, null);
+            countryService.save(country);
+            return "redirect:countries";
+        }
+        return "redirect:countries";
     }
 }

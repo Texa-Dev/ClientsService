@@ -6,3 +6,29 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+h1, h2, h3, h4 {
+    color: #8a0a1a;
+}
+
+label {
+    color: #c96100;
+}
+
+input, option{
+    color: #c96100;
+}
+.select{
+    color: #c96100;
+}
+.table.table-bordered.table-dark td {
+    color: #c96100;
+}
+.table.table-bordered.table-dark th {
+    color: #868282;
+}
+.inputSub{
+    background: #868282;
+    color: #ffffff;
+}
+

@@ -17,7 +17,7 @@
 </div>
 <div class="container-fluid d-flex justify-content-center align-items-center">
     <div class="row newClientForm">
-        <form action="newClientForm" method="post">
+        <form th:action="@{newClientForm}" method="post">
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputSurname" class="sr-only mx-3">Surname: </label>
                 <input name="surname" type="text" id="inputSurname">
@@ -41,7 +41,7 @@
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputGender" class="sr-only mx-3">Gender: </label>
                 <select name="gender" id="inputGender" class="form-control">
-                    <option selected>NONE</option>
+                    <option selected class="select">NONE</option>
                     <option>MALE</option>
                     <option>FEMALE</option>
                 </select>
@@ -90,11 +90,11 @@
                     <div class="form-group d-flex justify-content-between">
                         <form th:action="@{clientUpdate}" method="post">
                             <input type="hidden" name="id" th:value="${client.id}">
-                            <input type="submit" value="...">
+                            <input class="inputSub" type="submit" value="Update">
                         </form>
                         <form th:action="@{clientDelete}" method="post">
                             <input type="hidden" name="id" th:value="${client.id}">
-                            <input type="submit" value="Del">
+                            <input class="inputSub" type="submit" value="Delete">
                         </form>
                     </div>
                 </td>

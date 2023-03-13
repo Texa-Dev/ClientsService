@@ -41,7 +41,7 @@ public class SecurityConfig {
             BCryptPasswordEncoder encoder,
             UserDetailsService userDetailsService)
             throws Exception {
-        System.out.println("AuthManager");
+        System.err.println("AuthManager");
 
         return security
                 .getSharedObject

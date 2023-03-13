@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Region districts</title>
+    <th:block th:insert="~{/fragments/settings-head::settings-head}">
+    </th:block>
+</head>
+<body>
+<th:block th:insert="~{/fragments/header::header}"></th:block>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Cities</h2>
+                </div>
+            </div>
+
+            <div class="regionTable">
+                <table class="table table-bordered table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">City type</th>
+                        <th scope="col">City name</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Addresses</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <!--/*@thymesVar id="cities" type="List<City>"*/-->
+                    <tr th:each="city:${cities}">
+                        <td th:utext="${city.id}"></td>
+                        <td th:utext="${city.getCityType().name()}"></td>
+                        <td th:utext="${city.getCityName().getCityName()}"></td>
+                        <td>
+                            <form th:action="@{cityUpdate}" method="post">
+                                <input type="hidden" name="id" th:value="${city.id}">
+                                <input type="submit" value="Update">
+                            </form>
+
+                        </td>
+                        <td>
+                            <form th:action="@{cityAddresses}" method="post">
+                                <input type="hidden" name="id" th:value="${city.id}">
+                                <input type="submit" value="Addresses">
+                            </form>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Add new city</h2>
+                </div>
+            </div>
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+                <div class="row addNewRegion">
+                    <form th:action="@{addNewCity}" method="post">
+                        <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                            <label for="inputRegion" class="sr-only mx-3">City name: </label>
+                            <input name="cityName" type="text" id="inputRegion">
+                        </div>
+                        <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                            <label for="inputRegion" class="sr-only mx-3">City type: </label>
+                            <select name="cityType" id="inputCityType" class="form-control">
+                                <th:block
+                                        th:each="cityType:${T(com.example.clientsservice.models.address.City.CityType).values()}">
+                                    <option th:value="${cityType}" th:text="${cityType}"></option>
+                                </th:block>
+
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <input name="id" type="hidden" th:value="*{id}">
+                        <div class="form-group form-control-lg container">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

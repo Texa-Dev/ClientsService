@@ -26,6 +26,7 @@ public class UserServiceDbTest {
     @Test
     @Order(1)
     void save() {
+        System.out.println(userExp);
         userAct = userService.save(userExp);
         assertEquals(userExp, userAct);
     }
