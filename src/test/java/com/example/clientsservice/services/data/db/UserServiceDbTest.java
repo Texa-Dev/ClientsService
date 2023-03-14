@@ -20,7 +20,7 @@ public class UserServiceDbTest {
     @Autowired
     User userExp;
     User userAct;
-
+    @Autowired
     List<User> userList;
 
     @Test

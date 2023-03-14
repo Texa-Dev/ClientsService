@@ -1,11 +1,12 @@
 package com.example.clientsservice.security;
 
-import org.hibernate.sql.ordering.antlr.OrderByTemplateTokenTypes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -50,5 +51,18 @@ public class SecurityConfig {
                 .passwordEncoder(encoder).
                 and().build();
 
+    }
+
+    @Bean
+    public WebSecurityCustomizer securityCustomizer(){
+        return customizer ->
+        customizer.debug(false)
+                .ignoring()
+                .antMatchers("css/**")
+                .antMatchers("ui/config/**")
+                .antMatchers("/registration")
+                .antMatchers("/clients")
+                .mvcMatchers(HttpMethod.POST, "/registration")
+                ;
     }
 }

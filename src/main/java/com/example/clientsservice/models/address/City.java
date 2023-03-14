@@ -4,13 +4,14 @@ import com.example.clientsservice.models.Address;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
+
 //
 @Entity
 @Table(name = "cities")
@@ -39,4 +40,17 @@ public class City {
     @OneToOne(mappedBy = "city")
     @EqualsAndHashCode.Exclude
     private Address address;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    City city = (City) o;
+    return cityType == city.cityType && district.equals(city.district) && cityName.equals(city.cityName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cityType, district, cityName);
+  }
 }

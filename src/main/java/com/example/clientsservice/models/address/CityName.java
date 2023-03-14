@@ -4,13 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 //
 @Entity
 @Table(name = "city_names")
@@ -25,4 +25,17 @@ public class CityName {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<City> city;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CityName cityName1 = (CityName) o;
+        return Objects.equals(id, cityName1.id) && Objects.equals(cityName, cityName1.cityName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cityName);
+    }
 }
