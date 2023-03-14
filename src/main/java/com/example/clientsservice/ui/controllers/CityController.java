@@ -40,9 +40,9 @@ public class CityController {
     }
 
     @PostMapping("addNewCity")
-    ModelAndView addNewDistrict(@RequestParam("cityName") String cityName,
-                                @RequestParam("cityType") City.CityType cityType,
-                                @RequestParam("id") Integer id) {
+    ModelAndView addNewCity(@RequestParam("cityName") String cityName,
+                            @RequestParam("cityType") City.CityType cityType,
+                            @RequestParam("id") Integer id) {
         District district = districtService.findById(id);
 
         CityName byName = cityNameService.findByName(cityName);
@@ -50,7 +50,6 @@ public class CityController {
         if (byName == null) {
             byName = cityNameService.save(new CityName(0, cityName, null));
         }
-
 
         City city = new City(0, cityType, district, byName, null);
         City finalCity = city;

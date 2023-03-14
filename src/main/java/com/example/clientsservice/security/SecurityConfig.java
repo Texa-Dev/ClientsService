@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+import static com.example.clientsservice.models.User.Role.ADMIN;
 
 @Configuration
 public class SecurityConfig {
@@ -32,7 +35,7 @@ public class SecurityConfig {
                         passwordEncoder(encoder::encode)
                         .username("admin")
                         .password("admin")
-                        .roles(com.example.clientsservice.models.User.Role.ADMIN.name())
+                        .roles(ADMIN.name())
                         .build());
     }
 
@@ -46,7 +49,7 @@ public class SecurityConfig {
 
         return security
                 .getSharedObject
-                (AuthenticationManagerBuilder.class)
+                        (AuthenticationManagerBuilder.class)
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(encoder).
                 and().build();
@@ -54,15 +57,31 @@ public class SecurityConfig {
     }
 
     @Bean
-    public WebSecurityCustomizer securityCustomizer(){
+    public WebSecurityCustomizer securityCustomizer() {
         return customizer ->
-        customizer.debug(false)
-                .ignoring()
-                .antMatchers("css/**")
-                .antMatchers("ui/config/**")
-                .antMatchers("/registration")
+                customizer.debug(false)
+                        .ignoring()
+                        .antMatchers("css/**")
+                        .antMatchers("ui/config/**")
+                        .antMatchers("/registration")
+                        .antMatchers("/clients")
+                        .mvcMatchers(HttpMethod.POST, "/registration");
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
+        security
+                .authorizeRequests()
+                .antMatchers("/error","/registration")
+                .permitAll()
                 .antMatchers("/clients")
-                .mvcMatchers(HttpMethod.POST, "/registration")
-                ;
+                .authenticated().
+                antMatchers("/users",
+                        "/countries",
+                        "/clientsUpdate")
+                .hasAnyAuthority(
+                        ADMIN.name()
+                );
+        return security.build();
     }
 }
