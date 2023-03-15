@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <th:block th:insert="~{/fragments/settings-head::settings-head}">
+    </th:block>
+</head>
+<body>
+<th:block th:insert="~{/fragments/header::header}"></th:block>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Addresses</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="clientsTable">
+                    <table class="table table-bordered table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Street type</th>
+                            <th scope="col">Street</th>
+                            <th scope="col">House</th>
+                            <th scope="col">Apartment</th>
+                            <th scope="col">Update</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <!--/*@thymesVar id="addresses" type="List<Address>"*/-->
+                        <tr th:each="address:${addresses}">
+                            <td th:utext="${address.id}"></td>
+                            <td th:utext="${address.getCity().getCityName().getCityName()}"></td>
+                            <td th:utext="${address.getStreet().getStreetType().name()}"></td>
+                            <td th:utext="${address.getStreet().getStreetName().getStreetName()}"></td>
+                            <td th:utext="${address.getHouse()}"></td>
+                            <td th:utext="${address.getApartment()}"></td>
+                            <td>
+                                <form th:action="@{addressUpdate}" method="post">
+                                    <input type="hidden" name="id" th:value="${address.getClient()}">
+                                    <input type="submit" value="...">
+                                </form>
+
+                            </td>
+                          <!--  <td>
+                                <form th:action="@{countryRegions}" method="post">
+                                    <input type="hidden" name="id" th:value="${country.id}">
+                                    <input type="submit" value="Regions">
+                                </form>
+
+                            </td>-->
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="col-lg-12 text-center">
+                <div class="section-title">
+                    <h2>Add new address</h2>
+                </div>
+            </div>
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+                <div class="row ">
+                    <form th:action="@{addNewAddress}" method="post">
+                        <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                            <label for="countryName" class="sr-only mx-3">Address: </label>
+                            <input name="countryName" type="text" id="countryName">
+                        </div>
+                        <div class="form-group form-control-lg container">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

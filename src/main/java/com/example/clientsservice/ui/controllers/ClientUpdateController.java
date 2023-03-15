@@ -1,6 +1,8 @@
 package com.example.clientsservice.ui.controllers;
 
+import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.services.data.AddressService;
 import com.example.clientsservice.services.data.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,10 +19,18 @@ public class ClientUpdateController {
     @Qualifier(value = "clientServiceDb")
     ClientService clientService;
 
+    @Autowired
+    @Qualifier("addressServiceDb")
+    AddressService addressService;
     @GetMapping("clientUpdate")
     public String load(Model model, @RequestParam("id") Integer id){
         Client client = clientService.findById(id);
-        model.addAttribute("client",client);
+        Address address = addressService.findById(client.getAddress().getId());
+        if (address!=null) {
+            model.addAttribute("client", client).addAttribute("address",address);
+            return "clientUpdate";
+        }
+        model.addAttribute("client", client).addAttribute("address", new Address());
         return "clientUpdate";
     }
 

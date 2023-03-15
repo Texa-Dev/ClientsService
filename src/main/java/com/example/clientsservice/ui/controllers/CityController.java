@@ -86,4 +86,10 @@ public class CityController {
         return new ModelAndView("redirect:districtCities",
                 new ModelMap("id", id));
     }
+
+     @PostMapping("addresses")
+    ModelAndView addresses(@RequestParam("id")Integer id) {
+        return new ModelAndView("redirect:addresses",
+                new ModelMap("id", id));
+    }
 }

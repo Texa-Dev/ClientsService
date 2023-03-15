@@ -42,27 +42,54 @@
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputGender" class="sr-only mx-3">Gender: </label>
-               <!-- <select name="gender" id="inputGender" class="form-control">
-                    &lt;!&ndash;/*@thymesVar id="gender" type="com.example.clientsservice.models.Client.Gender"*/&ndash;&gt;
-                    <option th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}"
-                            th:value="${gender}"
-                            th:text="${gender}"
-                            th:selected="${gender==client.getGender()}"
-                    ></option>
-                </select>-->
                 <select name="gender" id="inputGender" class="form-control">
                     <th:block th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}">
-                        <option th:value="${gender}" th:text="${gender}" th:selected="${gender==client.getGender()}" ></option>
+                        <option th:value="${gender}" th:text="${gender}"
+                                th:selected="${gender==client.getGender()}"></option>
+                    </th:block>
+                    <!--/*@thymesVar id="gender" type="com.example.clientsservice.models.Client.Gender"*/-->
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h3>Client address</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputCountry" class="sr-only mx-3">Country: </label>
+                <input name="country" type="text" id="inputCountry" th:value="*{}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputName" class="sr-only mx-3">Name: </label>
+                <input name="name" type="text" id="inputName" th:value="*{getName()}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputPatronymic" class="sr-only mx-3">Patronymic: </label>
+                <input name="patronymic" type="text" id="inputPatronymic" th:value="*{getPatronymic()}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputBirthDate" class="sr-only mx-3">Birth date: </label>
+                <input name="birthDate" type="date" id="inputBirthDate" th:value="*{getBirthDate()}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputEmail" class="sr-only mx-3">Email: </label>
+                <input name="email" type="text" id="inputEmail" th:value="*{getEmail()}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputGender" class="sr-only mx-3">Gender: </label>
+                <select name="gender" id="inputGender" class="form-control">
+                    <th:block th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}">
+                        <option th:value="${gender}" th:text="${gender}"
+                                th:selected="${gender==client.getGender()}"></option>
                     </th:block>
                     <!--/*@thymesVar id="gender" type="com.example.clientsservice.models.Client.Gender"*/-->
                     <option value=""></option>
                 </select>
             </div>
 
-            <!--  <option th:each="value : ${#enums.values('com.example.MyEnum')}"
-          th:value="${value}" th:text="${value}"
-          th:selected="${value == 'VALUE_ONE'} ? 'selected' : ''">
-  </option>-->
             <div class="form-group form-control-lg container">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
