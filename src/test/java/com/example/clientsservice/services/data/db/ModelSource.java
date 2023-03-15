@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class ModelSource {
     @Bean
     public User userInstance(BCryptPasswordEncoder encoder) {
-        String pass = encoder.encode("qwerty");
-        User user = new User(1, "user", pass, "user@mail.com");
+        String pass = encoder.encode("user");
+        User user = new User(3, "user", pass, "user@mail.com");
         user.setStatus(User.Status.ACTIVE);
-        user.setRole(User.Role.ADMIN);
+        user.setRole(User.Role.USER);
         return user;
     }
 }

@@ -4,6 +4,7 @@ import com.example.clientsservice.models.Address;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,7 +32,7 @@ public class Street {
     @EqualsAndHashCode.Exclude
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_streetName_id"))
     private StreetName streetName;
-    @OneToOne(mappedBy = "street")
+    @OneToMany(mappedBy = "street")
     @EqualsAndHashCode.Exclude
-    private Address address;
+    private List<Address> address;
 }

@@ -1,41 +1,36 @@
 package com.example.clientsservice.dbrelations;
 
 import com.example.clientsservice.models.Address;
-import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.address.City;
 import com.example.clientsservice.services.data.AddressService;
-import com.example.clientsservice.services.data.ClientService;
+import com.example.clientsservice.services.data.address.CityService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
 @SpringBootTest
-public class ClientAddressDbTest {
-
-    @Qualifier(value = "clientServiceDb")
+public class AddressCityDbTest {
     @Autowired
-    ClientService clientService;
-    @Qualifier(value = "addressServiceDb")
-    @Autowired
+    @Qualifier("addressServiceDb")
     AddressService addressService;
-
+    @Autowired
+    @Qualifier("cityServiceDb")
+    CityService cityService;
 
     @Test
     void save(){
         Random rnd = new Random();
         List<Address> allAddresses = addressService.findAll();
-        List<Client> clients = clientService.findAll();
+        List<City> allCities = cityService.findAll();
 
-        for (Client client: clients) {
-            Address address = allAddresses.get(rnd.nextInt(allAddresses.size()));
-            client.setAddress(address);
-            address.setClient(List.of(client));
+        for (Address address : allAddresses) {
+            City city = allCities.get(rnd.nextInt(allCities.size()));
+            address.setCity(city);
         }
-        clientService.saveAll(clients);
         addressService.saveAll(allAddresses);
     }
 }

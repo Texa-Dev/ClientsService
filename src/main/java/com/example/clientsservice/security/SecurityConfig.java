@@ -56,7 +56,7 @@ public class SecurityConfig {
 
     }
 
-    @Bean
+    //@Bean
     public WebSecurityCustomizer securityCustomizer() {
         return customizer ->
                 customizer.debug(false)
@@ -76,10 +76,10 @@ public class SecurityConfig {
                 .antMatchers("/registration")
                 .permitAll()
                 .antMatchers("/clients")
-                .authenticated().
-                antMatchers("/users",
-                        "/countries",
-                        "/clientsUpdate")
+                .authenticated()
+                .antMatchers("/users",
+                                    "/countries",
+                                    "/clientsUpdate")
                 .hasAuthority(ADMIN.name())
                 .and()
                 .formLogin().

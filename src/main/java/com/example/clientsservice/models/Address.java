@@ -31,7 +31,7 @@ public class Address {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private City city;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(foreignKey = @ForeignKey(name = "fk_street_id"))
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
