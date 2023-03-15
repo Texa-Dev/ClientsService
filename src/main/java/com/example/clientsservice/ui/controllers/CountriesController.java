@@ -40,7 +40,7 @@ public class CountriesController {
         if (country == null) {
             country = new Country(0, countryName, null);
             countryService.save(country);
-            return "redirect:countries";
+           // return "redirect:countries";
         }
         return "redirect:countries";
     }

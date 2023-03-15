@@ -12,6 +12,7 @@ public class ModelSource {
         String pass = encoder.encode("qwerty");
         User user = new User(1, "user", pass, "user@mail.com");
         user.setStatus(User.Status.ACTIVE);
+        user.setRole(User.Role.ADMIN);
         return user;
     }
 }

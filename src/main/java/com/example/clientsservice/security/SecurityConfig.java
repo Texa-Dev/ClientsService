@@ -65,6 +65,7 @@ public class SecurityConfig {
                         .antMatchers("ui/config/**")
                         .antMatchers("/registration")
                         .antMatchers("/clients")
+                        .antMatchers("/authorization")
                         .mvcMatchers(HttpMethod.POST, "/registration");
     }
 
@@ -72,16 +73,19 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
         security
                 .authorizeRequests()
-                .antMatchers("/error","/registration")
+                .antMatchers("/registration")
                 .permitAll()
                 .antMatchers("/clients")
                 .authenticated().
                 antMatchers("/users",
                         "/countries",
                         "/clientsUpdate")
-                .hasAnyAuthority(
-                        ADMIN.name()
-                );
+                .hasAuthority(ADMIN.name())
+                .and()
+                .formLogin().
+                loginPage("/authorization")
+                .and().logout().
+                logoutSuccessUrl("/authorization");
         return security.build();
     }
 }
