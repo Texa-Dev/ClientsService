@@ -1,4 +1,4 @@
-//JS
+//jQuery
 const clients_tab = `
 <div class="container-fluid">
     <div class="row">
@@ -46,43 +46,38 @@ const clients_tab = `
 </div>
 `;
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('addClientSubmit').onclick = (event) => {
+$(document).ready(()=>{
+    $('#addClientSubmit').click((event)=>{
         event.preventDefault();
         ajaxSubmitForm();
-    };
-
+    })
 })
 
-function ajaxSubmitForm() {
-    let form = document.getElementById('clientForm');
-   let formData = new FormData(form);
-let token = form.elements["user"].value
-    console.log(token)
-   let json = JSON.stringify(Object.fromEntries(formData));
+function ajaxSubmitForm(){
+    let form=$('#addNewClient')[0];
+    let formData = new FormData(form);
+let json = JSON.stringify(Object.fromEntries(formData))
 
-   console.log(json);
+    $.ajax({
+        type:'POST',
+        url:'/rest/addNewClient',
+        data:json,
+        processData:false,
+        contentType:'application/json; charset=utf-8',
+        headers:{
+            'X-CSRF-TOKEN':form('clients.html').childNodes[0].getAttribute('value')
+        },
+        success:(data, textStatus,jqXHR)=>{
+            let clients = JSON.parse(jqXHR.responseText);
 
-   let request = new XMLHttpRequest();
-    request.open('post','/rest/addNewClient');
-    request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-    request.send(json);
-
-    request.addEventListener('readystatechange',()=>{
-        if(request.readyState!==4){
-            return
-        }
-        if(request.status===200){
-            let clients = JSON.parse(request.responseText);
-            clients = {
+            clients={
                 'clients':clients
             }
-            let resultHtml=mustache.render(clients_tab,clients)
-            document.getElementById('clientsTableId').innerHTML = resultHtml;
-
-        }else{
-            alert(request.statusText);
+            let resultHtml = mustache.render(clients_tab,clients)
+            $('#clientsTableId').html(resultHtml)
+        },
+        error:(jqXMR, textStatus,errorThrown)=>{
+            console.log(textStatus)
         }
-
     })
 }
