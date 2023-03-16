@@ -5,6 +5,7 @@
     <title>Clients</title>
     <th:block th:insert="~{/fragments/settings-head::settings-head}">
     </th:block>
+    <script type="text/javascript" src="../static/js/mustache.js"></script>
 </head>
 <body>
 <th:block th:insert="~{/fragments/header::header}"></th:block>
@@ -17,7 +18,7 @@
 </div>
 <div class="container-fluid d-flex justify-content-center align-items-center">
     <div class="row newClientForm">
-        <form th:action="@{newClientForm}" method="post">
+        <form id="clientForm" th:action="@{newClientForm}" method="post">
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputSurname" class="sr-only mx-3">Surname: </label>
                 <input name="surname" type="text" id="inputSurname">
@@ -47,7 +48,7 @@
                 </select>
             </div>
             <div class="form-group form-control-lg container">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button id="addClientSubmit" type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>
@@ -61,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="clientsTable">
+    <div id="clientsTableId" class="clientsTable">
         <table class="table table-bordered table-dark">
             <thead>
             <tr>
