@@ -2,6 +2,7 @@ package com.example.clientsservice.ui.controllers;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.repositories.AddressRepository;
 import com.example.clientsservice.services.data.AddressService;
 import com.example.clientsservice.services.data.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +26,21 @@ public class ClientUpdateController {
     @GetMapping("clientUpdate")
     public String load(Model model, @RequestParam("id") Integer id){
         Client client = clientService.findById(id);
+        if (client.getAddress()!=null){
         Address address = addressService.findById(client.getAddress().getId());
-        if (address!=null) {
-            model.addAttribute("client", client).addAttribute("address",address);
+                    model.addAttribute("client", client).addAttribute("address",address);
             return "clientUpdate";
         }
-        model.addAttribute("client", client).addAttribute("address", new Address());
+        model.addAttribute("client", client).addAttribute("address",null);
         return "clientUpdate";
     }
 
     @PostMapping("clientUpdateForm")
-    public String clientUpdateForm(@ModelAttribute Client client){
+    public String clientUpdateForm(@ModelAttribute Client client, @RequestParam("address")Integer address){
+        if (address==0){
+            Address newAddress = new Address(address,"1","1",null,null,null);
+            System.out.println(newAddress);
+        }
         clientService.save(client);
         return "redirect:clients";
     }

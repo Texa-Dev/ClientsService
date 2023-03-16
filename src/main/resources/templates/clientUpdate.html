@@ -58,38 +58,66 @@
                     </div>
                 </div>
             </div>
+            <!--/*@thymesVar id="address" type="Address"*/-->
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <input name="address" type="hidden" th:value="${address!=null?address.id:0}">
                 <label for="inputCountry" class="sr-only mx-3">Country: </label>
-                <input name="country" type="text" id="inputCountry" th:value="*{}">
+                <input name="country" type="text" id="inputCountry"
+                       th:value="${address!=null?address.getCity().getDistrict().getRegion().getCountry().getCountry():''}">
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
-                <label for="inputName" class="sr-only mx-3">Name: </label>
-                <input name="name" type="text" id="inputName" th:value="*{getName()}">
+                <label for="inputRegion" class="sr-only mx-3">Region: </label>
+                <input name="region" type="text" id="inputRegion"
+                       th:value="${address!=null?address.getCity().getDistrict().getRegion().getRegion():''}">
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
-                <label for="inputPatronymic" class="sr-only mx-3">Patronymic: </label>
-                <input name="patronymic" type="text" id="inputPatronymic" th:value="*{getPatronymic()}">
+                <label for="inputDistrict" class="sr-only mx-3">District: </label>
+                <input name="patronymic" type="text" id="inputDistrict"
+                       th:value="${address!=null?address.getCity().getDistrict().getDistrict():''}">
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
-                <label for="inputBirthDate" class="sr-only mx-3">Birth date: </label>
-                <input name="birthDate" type="date" id="inputBirthDate" th:value="*{getBirthDate()}">
-            </div>
-            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
-                <label for="inputEmail" class="sr-only mx-3">Email: </label>
-                <input name="email" type="text" id="inputEmail" th:value="*{getEmail()}">
-            </div>
-            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
-                <label for="inputGender" class="sr-only mx-3">Gender: </label>
-                <select name="gender" id="inputGender" class="form-control">
-                    <th:block th:each="gender:${T(com.example.clientsservice.models.Client.Gender).values()}">
-                        <option th:value="${gender}" th:text="${gender}"
-                                th:selected="${gender==client.getGender()}"></option>
+                <label for="inputCityType" class="sr-only mx-3">City type: </label>
+                <select name="gender" id="inputCityType" class="form-control">
+                    <th:block th:each="cityType:${T(com.example.clientsservice.models.address.City.CityType).values()}">
+                        <option th:value="${cityType}" th:text="${cityType}"
+                                th:selected="${address!=null ?cityType==address.getCity().getCityType():cityType}"></option>
                     </th:block>
-                    <!--/*@thymesVar id="gender" type="com.example.clientsservice.models.Client.Gender"*/-->
+                    <!--&lt;!&ndash;/*@thymesVar id="cityType" type="com.example.clientsservice..address.City.CityType"*/&ndash;&gt;-->
                     <option value=""></option>
                 </select>
             </div>
-
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputCityName" class="sr-only mx-3">City name: </label>
+                <input name="cityName" type="text" id="inputCityName"
+                       th:value="${address!=null?address.getCity().getCityName().getCityName():''}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputStreetType" class="sr-only mx-3">Street type: </label>
+                <select name="streetType" id="inputStreetType" class="form-control">
+                    <th:block
+                            th:each="streetType:${T(com.example.clientsservice.models.address.Street.StreetType).values()}">
+                        <option th:value="${streetType}" th:text="${streetType}"
+                                    th:selected=" ${address!=null ?streetType==address.getStreet().getStreetType():cityType}"></option>
+                    </th:block>
+                    <!-- &lt;!&ndash;/*@thymesVar id="streetType" type="com.example.clientsservice..address.Street.StreetType"*/-->
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputStreetName" class="sr-only mx-3">Street name: </label>
+                <input name="streetName" type="text" id="inputStreetName"
+                       th:value="${address!=null?address.getStreet().getStreetName().getStreetName():''}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputHouse" class="sr-only mx-3">House: </label>
+                <input name="house" type="text" id="inputHouse" th:value="${address!=null?address.getHouse():''}">
+            </div>
+            <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
+                <label for="inputApartment" class="sr-only mx-3">Apartment: </label>
+                <input name="apartment" type="text" id="inputApartment"
+                       th:value="${address!=null?address.getApartment():''}">
+            </div>
+            -->
             <div class="form-group form-control-lg container">
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
