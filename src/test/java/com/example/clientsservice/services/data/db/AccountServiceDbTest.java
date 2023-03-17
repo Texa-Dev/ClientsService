@@ -28,8 +28,8 @@ public class AccountServiceDbTest {
     @Qualifier("clientServiceDb")
     ClientService clientService;
     static Account account = new Account(1L,10000, LocalDate.of(2023,3,20), null);
-    static Account account1 = new Account(2L, 500000.0,LocalDate.of(2023,3,20), null);
-    static Account account2 = new Account(3L, 10.0, LocalDate.of(2023,3,20),null);
+    static Account account1 = new Account(2L, 500000.0,LocalDate.of(2023,3,15), null);
+    static Account account2 = new Account(3L, 10.0, LocalDate.of(2023,3,10),null);
 
     static Account testOne;
     static List<Account> testList;

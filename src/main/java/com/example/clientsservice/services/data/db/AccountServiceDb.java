@@ -48,6 +48,7 @@ public class AccountServiceDb implements AccountService {
 
     @Override
     public List<Account> findAllByExpiredDateIsLessThan(LocalDate currentDate) {
-        return null;
+
+        return accountRepository.findAllByExpiredDateIsLessThan(LocalDate.now());
     }
 }

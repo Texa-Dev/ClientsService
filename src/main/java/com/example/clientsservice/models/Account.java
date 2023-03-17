@@ -22,7 +22,7 @@ public class Account {
     private double amount;
     @Column(nullable = false)
     private LocalDate expiredDate;
-    @ManyToMany(mappedBy = "accounts")
+    @ManyToMany(mappedBy = "accounts", fetch = FetchType.EAGER)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private List<Client> clients;
