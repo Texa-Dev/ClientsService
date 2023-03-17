@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,6 +22,7 @@ public class AccountServiceJson implements AccountService {
     private Gson gson;
     private String fileName = "accounts.json";
     private String json;
+
 
     @Override
     public Account save(Account account) {
@@ -77,5 +79,10 @@ public class AccountServiceJson implements AccountService {
         List<Account> all = findAll();
         all.clear();
         saveAll(all);
+    }
+
+    @Override
+    public List<Account> findAllByExpiredDateIsLessThan(LocalDate currentDate) {
+        return null;
     }
 }

@@ -6,6 +6,7 @@ import com.example.clientsservice.services.data.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,5 +44,10 @@ public class AccountServiceDb implements AccountService {
     @Override
     public void deleteAll() {
         accountRepository.deleteAll();
+    }
+
+    @Override
+    public List<Account> findAllByExpiredDateIsLessThan(LocalDate currentDate) {
+        return null;
     }
 }

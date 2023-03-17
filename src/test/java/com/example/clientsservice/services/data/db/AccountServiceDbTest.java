@@ -1,7 +1,9 @@
 package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.Account;
+import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.AccountService;
+import com.example.clientsservice.services.data.ClientService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,9 +24,12 @@ public class AccountServiceDbTest {
     @Qualifier("accountServiceDb")
     AccountService accountService;
 
-    static Account account = new Account(1L, 10000.0, null);
-    static Account account1 = new Account(2L, 500000.0, null);
-    static Account account2 = new Account(3L, 10.0, null);
+    @Autowired
+    @Qualifier("clientServiceDb")
+    ClientService clientService;
+    static Account account = new Account(1L,10000, LocalDate.of(2023,3,20), null);
+    static Account account1 = new Account(2L, 500000.0,LocalDate.of(2023,3,20), null);
+    static Account account2 = new Account(3L, 10.0, LocalDate.of(2023,3,20),null);
 
     static Account testOne;
     static List<Account> testList;
