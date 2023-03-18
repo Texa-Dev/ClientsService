@@ -1,4 +1,4 @@
-//jQuery
+
 const clients_tab = `
 <div class="container-fluid">
     <div class="row">

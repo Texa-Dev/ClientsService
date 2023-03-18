@@ -81,6 +81,7 @@ public class SecurityConfig {
                                     "/countries",
                                     "/clientsUpdate")
                 .hasAuthority(ADMIN.name())
+                .mvcMatchers("/rest/addNewClient").authenticated()
                 .and()
                 .formLogin().
                 loginPage("/authorization")

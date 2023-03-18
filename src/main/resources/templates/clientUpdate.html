@@ -72,12 +72,12 @@
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputDistrict" class="sr-only mx-3">District: </label>
-                <input name="patronymic" type="text" id="inputDistrict"
+                <input name="district" type="text" id="inputDistrict"
                        th:value="${address!=null?address.getCity().getDistrict().getDistrict():''}">
             </div>
             <div class="form-group form-control-lg d-flex justify-content-between align-items-center">
                 <label for="inputCityType" class="sr-only mx-3">City type: </label>
-                <select name="gender" id="inputCityType" class="form-control">
+                <select name="cityType" id="inputCityType" class="form-control">
                     <th:block th:each="cityType:${T(com.example.clientsservice.models.address.City.CityType).values()}">
                         <option th:value="${cityType}" th:text="${cityType}"
                                 th:selected="${address!=null ?cityType==address.getCity().getCityType():cityType}"></option>

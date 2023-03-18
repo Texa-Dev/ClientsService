@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class MailingService {
     static final String subject="Account expired out";
 
-    @Bean
+  //  @Bean
     public JavaMailSender getMailSender(){
         return new JavaMailSenderImpl();
     }

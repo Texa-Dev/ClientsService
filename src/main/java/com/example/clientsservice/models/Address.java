@@ -4,13 +4,13 @@ import com.example.clientsservice.models.address.Street;
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 //
 @Entity
 @Table(name = "addresses")
@@ -37,4 +37,16 @@ public class Address {
     @EqualsAndHashCode.Exclude
     private Street street;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(id, address.id) && Objects.equals(house, address.house) && Objects.equals(apartment, address.apartment) && Objects.equals(city, address.city) && Objects.equals(street, address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, house, apartment, city, street);
+    }
 }

@@ -21,6 +21,7 @@ public class CityServiceJson implements CityService {
     private String fileName = "cities.json";
     private String json;
 
+
     @Override
     public List<City> saveAll(List<City> cities) {
         json = gson.toJson(cities);

@@ -13,6 +13,7 @@ public class CityServiceDb implements CityService {
     @Autowired
     private CityRepository cityRepository;
 
+
     @Override
     public List<City> saveAll(List<City> cities) {
         List<City> list = cityRepository.saveAll(cities);
